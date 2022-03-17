@@ -35,14 +35,18 @@ const productSchema = new mongoose.Schema({
   ],
   sizes: [
     {
-      type: String,
-      required: [true, "Please select size for this product"],
+      size: {
+        type: String,
+        required: [true, "Please select size for this product"],
+      },
     },
   ],
   colors: [
     {
-      type: String,
-      required: [true, "Please select color for this product"],
+      color: {
+        type: String,
+        required: [true, "Please select color for this product"],
+      },
     },
   ],
   category: {
@@ -112,7 +116,7 @@ const productSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
-    required: true,
+    required: false,
   },
   createdAt: {
     type: Date,

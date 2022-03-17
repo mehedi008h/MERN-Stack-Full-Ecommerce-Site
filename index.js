@@ -18,8 +18,10 @@ app.use(fileUpload());
 
 // import all routes
 const auth = require("./routes/auth");
+const products = require("./routes/product");
 
 app.use("/api/v1", auth);
+app.use("/api/v1", products);
 
 // connecting to database
 connectDatabase();
