@@ -16,6 +16,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(fileUpload());
 
+// import all routes
+const auth = require("./routes/auth");
+
+app.use("/api/v1", auth);
+
 // connecting to database
 connectDatabase();
 

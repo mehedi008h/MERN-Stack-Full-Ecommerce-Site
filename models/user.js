@@ -16,9 +16,14 @@ const userSchema = new mongoose.Schema({
     unique: true,
     validate: [validator.isEmail, "Please enter valid email address"],
   },
+  phone: {
+    type: String,
+    required: [false, "Please enter your phone number"],
+    maxLength: [200, "Your phone number cannot exceed 200 characters"],
+  },
   address: {
     type: String,
-    required: [true, "Please enter your address"],
+    required: [false, "Please enter your address"],
     maxLength: [200, "Your address cannot exceed 200 characters"],
   },
   password: {
