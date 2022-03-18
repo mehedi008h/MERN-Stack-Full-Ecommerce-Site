@@ -12,3 +12,13 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
     product,
   });
 });
+
+// get all products => /api/v1/products
+exports.getProducts = catchAsyncErrors(async (req, res, next) => {
+  const products = await Product.find();
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
