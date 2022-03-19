@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { AiOutlineCloudUpload } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { clearErrors, register } from "../../../actions/userActions";
+import ButtonLoader from "../../../components/loader/ButtonLoader";
 import styles from "./Register.module.scss";
 
-const Register = () => {
+const Register = ({ history }) => {
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -22,6 +24,21 @@ const Register = () => {
     const alert = useAlert();
     const dispatch = useDispatch();
 
+    const { isAuthenticated, error, loading } = useSelector(
+        (state) => state.auth
+    );
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            history.push("/");
+        }
+
+        if (error) {
+            alert.error(error);
+            dispatch(clearErrors());
+        }
+    }, [dispatch, alert, isAuthenticated, error, history]);
+
     const submitHandler = (e) => {
         e.preventDefault();
 
@@ -30,6 +47,7 @@ const Register = () => {
         formData.set("email", email);
         formData.set("password", password);
         formData.set("avatar", avatar);
+        dispatch(register(formData));
     };
 
     const onChange = (e) => {
@@ -113,7 +131,9 @@ const Register = () => {
                         </div>
                     </div>
                     <div className={styles.from_group}>
-                        <button>Signup</button>
+                        <button>
+                            {loading ? <ButtonLoader /> : "Register"}
+                        </button>
                     </div>
                 </form>
                 <div className={styles.from_group}>

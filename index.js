@@ -26,6 +26,13 @@ app.use("/api/v1", products);
 // connecting to database
 connectDatabase();
 
+// Setting up cloudinary configuration
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 app.use("/", (req, res) => {
     res.send("App is running.");
 });
