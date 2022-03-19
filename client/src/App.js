@@ -5,8 +5,14 @@ import Navbar from "./components/header/Navbar";
 import Login from "./pages/auth/login/Login";
 import Products from "./pages/products/Products";
 import Register from "./pages/auth/register/Register";
+import { useEffect } from "react";
+import store from "./store";
+import { loadUser } from "./actions/userActions";
 
 function App() {
+    useEffect(() => {
+        store.dispatch(loadUser());
+    }, []);
     return (
         <div>
             <Router>

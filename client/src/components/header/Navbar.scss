@@ -1,115 +1,118 @@
 .navbar {
-  background-color: brown;
-  font-family: var(--font-poppins);
+    background-color: brown;
+    font-family: var(--font-poppins);
 
-  .container {
-    padding: 0.5rem 1rem;
-  }
-  .nav_links {
-    ul {
-      list-style: none;
+    .container {
+        padding: 0rem 1rem;
+    }
+    .nav_links {
+        ul {
+            list-style: none;
 
-      li {
-        margin: 0.5rem 1rem 0 1rem;
-        color: white;
-        a {
-          text-decoration: none;
-          color: white;
-          cursor: pointer;
+            li {
+                margin: 0.5rem 1rem 0 1rem;
+                color: white;
+                a {
+                    text-decoration: none;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
         }
-      }
+        @media screen and (max-width: 900px) {
+            display: none;
+        }
     }
-    @media screen and (max-width: 900px) {
-      display: none;
-    }
-  }
 }
 .app__navbar-menu {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  position: relative;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-golden);
-
-  svg {
-    width: 70%;
-    height: 70%;
-    color: var(--color-white);
-  }
-
-  div {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 5;
-
-    padding: 1rem;
-
-    width: 80%;
-    height: 100vh;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: relative;
 
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    flex-direction: column;
-
-    // background: url("../../assets/bgWhite.png");
-    background-color: var(--color-white);
-    background-size: cover;
-    background-repeat: repeat;
-
-    /* top box shadow */
-    box-shadow: 0px 0px 20px rgba(168, 168, 168, 0.15);
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-golden);
 
     svg {
-      width: 35px;
-      height: 35px;
-      color: var(--secondary-color);
-      margin: 0.5rem 1rem;
+        width: 70%;
+        height: 70%;
+        color: var(--color-white);
     }
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
+    div {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 5;
 
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      flex-direction: column;
+        padding: 1rem;
 
-      li {
-        margin: 1rem;
+        width: 80%;
+        height: 100vh;
 
-        a {
-          color: var(--gray-color);
-          text-decoration: none;
-          font-size: 1rem;
-          text-transform: uppercase;
-          font-weight: 500;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        flex-direction: column;
 
-          transition: all 0.3s ease-in-out;
+        // background: url("../../assets/bgWhite.png");
+        background-color: var(--color-white);
+        background-size: cover;
+        background-repeat: repeat;
 
-          &:hover {
+        /* top box shadow */
+        box-shadow: 0px 0px 20px rgba(168, 168, 168, 0.15);
+
+        svg {
+            width: 35px;
+            height: 35px;
             color: var(--secondary-color);
-          }
+            margin: 0.5rem 1rem;
         }
-      }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+
+            li {
+                margin: 1rem;
+                .dropdown {
+                    background-color: black !important;
+                }
+
+                a {
+                    color: var(--gray-color);
+                    text-decoration: none;
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    font-weight: 500;
+
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        color: var(--secondary-color);
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: 900px) {
+            display: none;
+        }
     }
 
     @media screen and (min-width: 900px) {
-      display: none;
+        display: none;
     }
-  }
-
-  @media screen and (min-width: 900px) {
-    display: none;
-  }
 }
