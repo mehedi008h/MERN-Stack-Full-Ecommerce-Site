@@ -1,0 +1,21 @@
+.spinner {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product {
+    background-color: aliceblue;
+    padding: 1rem;
+    border-radius: 20px;
+    font-family: var(--font-poppins);
+
+    div {
+        text-align: center;
+        img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+        }
+    }
+}
