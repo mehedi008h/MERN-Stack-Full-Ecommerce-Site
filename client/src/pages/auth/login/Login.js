@@ -23,7 +23,7 @@ const Login = () => {
                 </div>
                 <div className={styles.from_group}>
                     <p className="text-center text-white">
-                        Dont Have Account ? <Link to="/signup">Signup</Link>
+                        Dont Have Account ? <Link to="/register">Signup</Link>
                     </p>
                 </div>
             </div>
