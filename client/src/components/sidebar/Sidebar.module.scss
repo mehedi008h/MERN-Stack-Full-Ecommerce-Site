@@ -1,0 +1,39 @@
+.sidebar {
+    min-height: 88vh;
+    background: rgba(230, 228, 228, 0.25);
+    // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    font-family: var(--font-roboto);
+    padding: 1rem;
+
+    div {
+        margin-top: 5px;
+        span {
+            font-weight: 500;
+            letter-spacing: 1px;
+            font-size: 16px;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            li {
+                list-style: none;
+                padding: 10px 5px;
+
+                &:hover {
+                    border-right: 4px solid pink;
+                    border-radius: 5px;
+                }
+                a {
+                    text-decoration: none;
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                    padding: 10px 0px;
+                    color: gray;
+                }
+            }
+        }
+    }
+}

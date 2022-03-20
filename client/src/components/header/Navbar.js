@@ -1,6 +1,11 @@
 import React, { useState } from "react";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import {
+    AiOutlineLogout,
+    AiOutlineShoppingCart,
+    AiOutlineUser,
+} from "react-icons/ai";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { MdOutlineDashboard } from "react-icons/md";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { Spinner } from "react-bootstrap";
@@ -10,6 +15,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false);
+    const [dropdown, setDropdown] = useState(false);
     const { user, loading } = useSelector((state) => state.auth);
     return (
         <nav className="navbar">
@@ -50,15 +56,80 @@ const Navbar = () => {
                                                     borderRadius: "50%",
                                                     border: "2px solid black",
                                                 }}
-                                                src={user?.avatar.url}
+                                                src={user?.avatar?.url}
                                                 alt={user?.name}
                                             />
                                         </li>
                                         <li>
-                                            <Link to="/login">
+                                            <button
+                                                onClick={() => {
+                                                    dropdown
+                                                        ? setDropdown(false)
+                                                        : setDropdown(true);
+                                                }}
+                                            >
                                                 {user?.name}
-                                            </Link>
+                                            </button>
                                         </li>
+                                        {dropdown && (
+                                            <div className="dropdown">
+                                                <Link
+                                                    to="/profile"
+                                                    onClick={() =>
+                                                        setDropdown(false)
+                                                    }
+                                                >
+                                                    <AiOutlineUser
+                                                        size={20}
+                                                        className="me-3"
+                                                    />
+                                                    Profile
+                                                </Link>
+                                                {user?.role === "admin" && (
+                                                    <>
+                                                        <Link
+                                                            to="/admin"
+                                                            onClick={() =>
+                                                                setDropdown(
+                                                                    false
+                                                                )
+                                                            }
+                                                        >
+                                                            <MdOutlineDashboard
+                                                                size={20}
+                                                                className="me-3"
+                                                            />
+                                                            Dashboard
+                                                        </Link>
+                                                    </>
+                                                )}
+                                                <Link
+                                                    to="/profile"
+                                                    onClick={() =>
+                                                        setDropdown(false)
+                                                    }
+                                                >
+                                                    <AiOutlineUser
+                                                        size={20}
+                                                        className="me-3"
+                                                    />
+                                                    Profile
+                                                </Link>
+                                                <Link
+                                                    to="/profile"
+                                                    id="logout"
+                                                    onClick={() =>
+                                                        setDropdown(false)
+                                                    }
+                                                >
+                                                    <AiOutlineLogout
+                                                        size={20}
+                                                        className="me-3"
+                                                    />
+                                                    Logout
+                                                </Link>
+                                            </div>
+                                        )}
                                     </>
                                 ) : (
                                     <>

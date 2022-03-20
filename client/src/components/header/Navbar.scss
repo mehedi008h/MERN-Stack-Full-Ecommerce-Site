@@ -1,6 +1,7 @@
 .navbar {
     background-color: brown;
     font-family: var(--font-poppins);
+    position: relative;
 
     .container {
         padding: 0rem 1rem;
@@ -16,6 +17,43 @@
                     text-decoration: none;
                     color: white;
                     cursor: pointer;
+                }
+
+                button {
+                    background-color: unset;
+                    border: 2px solid white;
+                    border-radius: 20px;
+                    padding: 0.2rem 1rem;
+                    color: white;
+                }
+            }
+            .dropdown {
+                position: absolute;
+                padding: 1rem;
+                top: 85px;
+                right: 150px;
+                min-width: 200px;
+                z-index: 999;
+                border-radius: 10px;
+
+                display: flex;
+                flex-direction: column;
+
+                background: rgba(230, 228, 228, 0.25);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+
+                a {
+                    text-decoration: none;
+                    font-weight: 500;
+                    color: black;
+                    padding: 0.5rem 2rem;
+                    border-radius: 5px;
+                    transition: all 0.3s;
+
+                    &:hover {
+                        background-color: rgb(172, 235, 214);
+                    }
                 }
             }
         }
@@ -86,11 +124,7 @@
             flex-direction: column;
 
             li {
-                margin: 1rem;
-                .dropdown {
-                    background-color: black !important;
-                }
-
+                margin: 0rem 1rem;
                 a {
                     color: var(--gray-color);
                     text-decoration: none;

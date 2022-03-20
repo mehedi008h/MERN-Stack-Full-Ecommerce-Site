@@ -8,6 +8,8 @@ import Register from "./pages/auth/register/Register";
 import { useEffect } from "react";
 import store from "./store";
 import { loadUser } from "./actions/userActions";
+import Dashboard from "./pages/admin/dashboard/Dashboard";
+import NewProduct from "./pages/admin/newProduct/NewProduct";
 
 function App() {
     useEffect(() => {
@@ -21,6 +23,8 @@ function App() {
                 <Route path="/login" component={Login} exact />
                 <Route path="/register" component={Register} exact />
                 <Route path="/products" component={Products} exact />
+                <Route path="/admin" component={Dashboard} exact />
+                <Route path="/admin/product/new" component={NewProduct} exact />
             </Router>
         </div>
     );
