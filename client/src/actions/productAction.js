@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+    ADMIN_PRODUCTS_FAIL,
+    ADMIN_PRODUCTS_REQUEST,
+    ADMIN_PRODUCTS_SUCCESS,
     ALL_PRODUCTS_FAIL,
     ALL_PRODUCTS_REQUEST,
     ALL_PRODUCTS_SUCCESS,
@@ -9,6 +12,7 @@ import {
     NEW_PRODUCT_SUCCESS,
 } from "../constants/productsConstants";
 
+// get products for user
 export const getProducts = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_PRODUCTS_REQUEST });
@@ -27,6 +31,7 @@ export const getProducts = () => async (dispatch) => {
     }
 };
 
+// create new produtc by admin
 export const newProduct = (productData) => async (dispatch) => {
     try {
         dispatch({ type: NEW_PRODUCT_REQUEST });
@@ -50,6 +55,25 @@ export const newProduct = (productData) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: NEW_PRODUCT_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+};
+
+// get admin products
+export const getAdminProducts = () => async (dispatch) => {
+    try {
+        dispatch({ type: ADMIN_PRODUCTS_REQUEST });
+
+        const { data } = await axios.get(`/api/v1/admin/products`);
+
+        dispatch({
+            type: ADMIN_PRODUCTS_SUCCESS,
+            payload: data.products,
+        });
+    } catch (error) {
+        dispatch({
+            type: ADMIN_PRODUCTS_FAIL,
             payload: error.response.data.message,
         });
     }

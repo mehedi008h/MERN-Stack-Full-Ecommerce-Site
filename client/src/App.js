@@ -10,13 +10,14 @@ import store from "./store";
 import { loadUser } from "./actions/userActions";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import NewProduct from "./pages/admin/newProduct/NewProduct";
+import ProductsList from "./pages/admin/products/ProductsList";
 
 function App() {
     useEffect(() => {
         store.dispatch(loadUser());
     }, []);
     return (
-        <div>
+        <div className="app">
             <Router>
                 <Navbar />
                 <Route path="/" component={Home} exact />
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/products" component={Products} exact />
                 <Route path="/admin" component={Dashboard} exact />
                 <Route path="/admin/product/new" component={NewProduct} exact />
+                <Route path="/admin/products" component={ProductsList} exact />
             </Router>
         </div>
     );
