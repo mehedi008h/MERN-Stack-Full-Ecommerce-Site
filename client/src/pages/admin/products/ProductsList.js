@@ -76,12 +76,16 @@ const ProductsList = ({ history }) => {
                                                             styles.actions
                                                         }
                                                     >
-                                                        <Link>
+                                                        <Link
+                                                            to={`/admin/product/details/${product._id}`}
+                                                        >
                                                             <AiOutlineEye
                                                                 size={20}
                                                             />
                                                         </Link>
-                                                        <Link>
+                                                        <Link
+                                                            to={`/admin/product/${product._id}`}
+                                                        >
                                                             <AiOutlineEdit
                                                                 size={20}
                                                             />

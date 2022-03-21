@@ -1,0 +1,19 @@
+.product_details {
+    width: 100%;
+    min-height: 88.5vh;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+
+    .image_preivew {
+        width: 450px;
+        height: 300px;
+        border-radius: 10px;
+    }
+    .image_container {
+        width: 400px;
+        height: 90px;
+        margin-top: 10px;
+        border-radius: 10px;
+    }
+}

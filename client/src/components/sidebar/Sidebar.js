@@ -15,7 +15,7 @@ const Sidebar = () => {
                 <span>Main</span>
                 <div className="mt-1">
                     <li>
-                        <Link to="/">
+                        <Link to="/admin">
                             <MdOutlineDashboard className="me-3" size={25} />
                             Dashboard
                         </Link>

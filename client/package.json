@@ -25,6 +25,7 @@
         "redux-devtools-extension": "^2.13.9",
         "redux-thunk": "^2.4.1",
         "sass": "^1.49.9",
+        "swiper": "^8.0.7",
         "web-vitals": "^2.1.4"
     },
     "scripts": {

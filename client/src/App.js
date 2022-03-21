@@ -12,6 +12,8 @@ import Dashboard from "./pages/admin/dashboard/Dashboard";
 import NewProduct from "./pages/admin/newProduct/NewProduct";
 import ProductsList from "./pages/admin/products/ProductsList";
 import ProtectedRoute from "./components/route/ProtectedRoute";
+import ProductDetails from "./pages/admin/productDetails/ProductDetails";
+import UpdateProduct from "./pages/admin/updateProduct/UpdateProduct";
 
 function App() {
     useEffect(() => {
@@ -41,6 +43,18 @@ function App() {
                     path="/admin/products"
                     isAdmin={true}
                     component={ProductsList}
+                    exact
+                />
+                <ProtectedRoute
+                    path="/admin/product/details/:id"
+                    isAdmin={true}
+                    component={ProductDetails}
+                    exact
+                />
+                <ProtectedRoute
+                    path="/admin/product/:id"
+                    isAdmin={true}
+                    component={UpdateProduct}
                     exact
                 />
             </Router>
