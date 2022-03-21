@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import Sidebar from "../../../components/sidebar/Sidebar";
-import styles from "./NewProduct.module.scss";
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
 
-const NewProduct = () => {
+import styles from "./NewProduct.module.scss";
+import { clearErrors, newProduct } from "../../../actions/productAction";
+import { NEW_PRODUCT_RESET } from "../../../constants/productsConstants";
+import ButtonLoader from "../../../components/loader/ButtonLoader";
+
+const NewProduct = ({ history }) => {
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
@@ -34,43 +40,46 @@ const NewProduct = () => {
     const sizes = ["30", "32", "34", "36"];
     const colors = ["White", "Black", "Green", "Blue", "Yellow", "Pink"];
 
-    // const alert = useAlert();
-    // const dispatch = useDispatch();
+    const alert = useAlert();
+    const dispatch = useDispatch();
 
-    // const { loading, error, success } = useSelector(state => state.newProduct);
+    const { loading, error, success } = useSelector(
+        (state) => state.newProduct
+    );
 
-    // useEffect(() => {
+    useEffect(() => {
+        if (error) {
+            alert.error(error);
+            dispatch(clearErrors());
+        }
 
-    //     if (error) {
-    //         alert.error(error);
-    //         dispatch(clearErrors())
-    //     }
+        if (success) {
+            history.push("/admin/products");
+            alert.success("Product created successfully");
+            dispatch({ type: NEW_PRODUCT_RESET });
+        }
+    }, [dispatch, alert, error, success, history]);
 
-    //     if (success) {
-    //         history.push('/admin/products');
-    //         alert.success('Product created successfully');
-    //         dispatch({ type: NEW_PRODUCT_RESET })
-    //     }
+    const submitHandler = (e) => {
+        e.preventDefault();
 
-    // }, [dispatch, alert, error, success, history])
+        const formData = new FormData();
+        formData.set("name", name);
+        formData.set("price", price);
+        formData.set("description", description);
+        formData.set("category", category);
+        formData.set("stock", stock);
+        formData.set("seller", seller);
+        formData.set("type", type);
+        formData.set("size", size);
+        formData.set("color", color);
 
-    // const submitHandler = (e) => {
-    //     e.preventDefault();
+        images.forEach((image) => {
+            formData.append("images", image);
+        });
 
-    //     const formData = new FormData();
-    //     formData.set('name', name);
-    //     formData.set('price', price);
-    //     formData.set('description', description);
-    //     formData.set('category', category);
-    //     formData.set('stock', stock);
-    //     formData.set('seller', seller);
-
-    //     images.forEach(image => {
-    //         formData.append('images', image)
-    //     })
-
-    //     dispatch(newProduct(formData))
-    // }
+        dispatch(newProduct(formData));
+    };
 
     const onChange = (e) => {
         const files = Array.from(e.target.files);
@@ -104,7 +113,7 @@ const NewProduct = () => {
                     <div className={styles.product_input}>
                         <div className={styles.form}>
                             <h4>Add Product</h4>
-                            <form>
+                            <form onSubmit={submitHandler}>
                                 {/* name section  */}
                                 <div className={styles.from_group}>
                                     <label htmlFor="name_field">Name</label>
@@ -313,8 +322,11 @@ const NewProduct = () => {
 
                                 <div className={styles.from_group}>
                                     <button type="submit">
-                                        {/* {loading ? <ButtonLoader /> : "Login"} */}
-                                        Add Product
+                                        {loading ? (
+                                            <ButtonLoader />
+                                        ) : (
+                                            "Add Product"
+                                        )}
                                     </button>
                                 </div>
                             </form>

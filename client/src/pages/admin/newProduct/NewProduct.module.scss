@@ -4,6 +4,18 @@
     padding: 0;
     margin: 0;
     overflow: hidden;
+    background-color: #dcd9d4;
+    background-image: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.5) 0%,
+            rgba(0, 0, 0, 0.5) 100%
+        ),
+        radial-gradient(
+            at 50% 0%,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(0, 0, 0, 0.5) 50%
+        );
+    background-blend-mode: soft-light, screen;
 
     .product_input {
         display: flex;
@@ -11,11 +23,11 @@
         justify-content: center;
 
         .form {
-            background: rgba(230, 228, 228, 0.25);
+            background-color: white;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             // backdrop-filter: blur(4px);
             // -webkit-backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            // border: 1px solid rgba(255, 255, 255, 0.18);
             padding: 2rem;
             border-radius: 20px;
             min-width: 50%;
