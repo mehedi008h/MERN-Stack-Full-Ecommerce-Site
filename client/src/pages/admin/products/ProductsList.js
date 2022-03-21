@@ -5,16 +5,24 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./ProductsList.module.scss";
-import { clearErrors, getAdminProducts } from "../../../actions/productAction";
+import {
+    clearErrors,
+    deleteProduct,
+    getAdminProducts,
+} from "../../../actions/productAction";
 import Loader from "../../../components/loader/Loader";
 import { Link } from "react-router-dom";
 
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
+import { DELETE_PRODUCT_RESET } from "../../../constants/productsConstants";
 const ProductsList = ({ history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
 
     const { loading, error, products } = useSelector((state) => state.products);
+    const { error: deleteError, isDeleted } = useSelector(
+        (state) => state.product
+    );
 
     useEffect(() => {
         dispatch(getAdminProducts());
@@ -23,7 +31,22 @@ const ProductsList = ({ history }) => {
             alert.error(error);
             dispatch(clearErrors());
         }
-    }, [dispatch, alert, error, history]);
+
+        if (deleteError) {
+            alert.error(deleteError);
+            dispatch(clearErrors());
+        }
+
+        if (isDeleted) {
+            alert.success("Product deleted successfully");
+            history.push("/admin/products");
+            dispatch({ type: DELETE_PRODUCT_RESET });
+        }
+    }, [dispatch, alert, error, deleteError, isDeleted, history]);
+
+    const deleteProductHandler = (id) => {
+        dispatch(deleteProduct(id));
+    };
     return (
         <div className={styles.products}>
             <div className="row">
@@ -90,7 +113,13 @@ const ProductsList = ({ history }) => {
                                                                 size={20}
                                                             />
                                                         </Link>
-                                                        <button>
+                                                        <button
+                                                            onClick={() =>
+                                                                deleteProductHandler(
+                                                                    product._id
+                                                                )
+                                                            }
+                                                        >
                                                             <AiOutlineDelete
                                                                 size={20}
                                                             />
