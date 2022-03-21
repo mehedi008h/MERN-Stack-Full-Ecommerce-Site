@@ -11,6 +11,7 @@ import { loadUser } from "./actions/userActions";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import NewProduct from "./pages/admin/newProduct/NewProduct";
 import ProductsList from "./pages/admin/products/ProductsList";
+import ProtectedRoute from "./components/route/ProtectedRoute";
 
 function App() {
     useEffect(() => {
@@ -24,9 +25,24 @@ function App() {
                 <Route path="/login" component={Login} exact />
                 <Route path="/register" component={Register} exact />
                 <Route path="/products" component={Products} exact />
-                <Route path="/admin" component={Dashboard} exact />
-                <Route path="/admin/product/new" component={NewProduct} exact />
-                <Route path="/admin/products" component={ProductsList} exact />
+                <ProtectedRoute
+                    path="/admin"
+                    isAdmin={true}
+                    component={Dashboard}
+                    exact
+                />
+                <ProtectedRoute
+                    path="/admin/product/new"
+                    isAdmin={true}
+                    component={NewProduct}
+                    exact
+                />
+                <ProtectedRoute
+                    path="/admin/products"
+                    isAdmin={true}
+                    component={ProductsList}
+                    exact
+                />
             </Router>
         </div>
     );

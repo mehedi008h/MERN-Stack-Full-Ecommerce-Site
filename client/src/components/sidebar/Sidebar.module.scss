@@ -1,6 +1,6 @@
 .sidebar {
     min-height: 88vh;
-    background-color: white;
+    background-color: #ffffff;
     // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     border: 1px solid rgba(255, 255, 255, 0.18);
 
@@ -23,8 +23,13 @@
                 padding: 10px 5px;
 
                 &:hover {
-                    border-right: 4px solid pink;
+                    border-right: 4px solid #00ccd6;
+                    background-color: #e6ffff;
+
                     border-radius: 5px;
+                    a {
+                        color: #00ccd6;
+                    }
                 }
                 a {
                     text-decoration: none;
