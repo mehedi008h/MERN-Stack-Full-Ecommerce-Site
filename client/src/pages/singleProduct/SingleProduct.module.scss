@@ -1,0 +1,38 @@
+.product_details {
+    display: flex;
+    margin-top: 75px;
+    font-family: var(--font-poppins);
+
+    .preview_image {
+        height: 350px;
+        width: 500px;
+        border-radius: 20px;
+        img {
+            height: 300px;
+            width: 450px;
+            border-radius: 20px;
+        }
+    }
+
+    .image_thumbline {
+        display: flex;
+        align-items: center;
+        width: 450px;
+
+        div {
+            img {
+                height: 100px;
+                width: 135px;
+                margin: 5px;
+            }
+        }
+    }
+
+    .Product_info {
+        p {
+            color: var(--color-gray);
+            font-size: 16px;
+            margin-top: 5px;
+        }
+    }
+}

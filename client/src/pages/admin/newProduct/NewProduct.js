@@ -17,8 +17,6 @@ const NewProduct = ({ history }) => {
     const [stock, setStock] = useState(0);
     const [seller, setSeller] = useState("");
     const [type, setType] = useState("");
-    const [sizes, setSizes] = useState([]);
-    const [colors, setColors] = useState([]);
     const [images, setImages] = useState([]);
     const [imagesPreview, setImagesPreview] = useState([]);
 
@@ -69,8 +67,6 @@ const NewProduct = ({ history }) => {
         formData.set("stock", stock);
         formData.set("seller", seller);
         formData.set("type", type);
-        formData.set("sizes", sizes);
-        formData.set("colors", colors);
 
         images.forEach((image) => {
             formData.append("images", image);
@@ -213,34 +209,6 @@ const NewProduct = ({ history }) => {
                                             />
                                         </div>
                                     </div>
-                                </div>
-                                {/* size section  */}
-                                <div className={styles.from_group}>
-                                    <label htmlFor="sizes_field">
-                                        Sizes (coma separated)
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="sizes_field"
-                                        value={sizes}
-                                        onChange={(e) =>
-                                            setSizes(e.target.value.split(","))
-                                        }
-                                    />
-                                </div>
-                                {/* size section  */}
-                                <div className={styles.from_group}>
-                                    <label htmlFor="colors_field">
-                                        Colors (coma separated)
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="colors_field"
-                                        value={colors}
-                                        onChange={(e) =>
-                                            setColors(e.target.value.split(","))
-                                        }
-                                    />
                                 </div>
 
                                 {/* types section  */}

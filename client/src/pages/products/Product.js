@@ -12,7 +12,7 @@ const Product = ({ product }) => {
                 <div className={styles.product_image}>
                     <img src={product?.images[0].url} alt={product?.name} />
                 </div>
-                <Link>{product?.name}</Link>
+                <Link to={`/product/${product?._id}`}>{product?.name}</Link>
                 <div className="d-flex align-items-center justify-content-between mt-3">
                     <div className={styles.product_rating}>
                         <AiFillStar size={20} color={"gold"} />
@@ -29,7 +29,7 @@ const Product = ({ product }) => {
                             size={25}
                         />
                     </button>
-                    <Link>
+                    <Link to={`/product/${product?._id}`}>
                         <AiOutlineEye size={25} />
                     </Link>
                 </div>
