@@ -53,7 +53,7 @@ const ProductsList = ({ history }) => {
                 <div className="col-md-2">
                     <Sidebar />
                 </div>
-                <div className="col-md-10">
+                <div className="col-md-10" style={{ marginTop: "75px" }}>
                     <div className={`${styles.table} container mt-3`}>
                         <div>
                             <Table responsive>

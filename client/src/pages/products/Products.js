@@ -34,27 +34,23 @@ const Products = () => {
             ) : (
                 <>
                     <div className={styles.products}>
-                        <div className="container mt-3">
+                        <div
+                            className="container"
+                            style={{ marginTop: "80px" }}
+                        >
                             <div className="row g-3">
                                 <div className="col-md-3">
                                     <h1>1</h1>
                                 </div>
                                 <div className="col-md-9">
-                                    <div className="row g-3">
+                                    <div className="row g-5">
                                         {products &&
                                             products.map((product) => (
-                                                <div
+                                                <Product
                                                     key={product._id}
-                                                    className="col-md-4"
-                                                >
-                                                    <Product
-                                                        product={product}
-                                                    />
-                                                </div>
+                                                    product={product}
+                                                />
                                             ))}
-                                        <div className="col-md-4">
-                                            <Product />
-                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -19,7 +19,7 @@ const Navbar = () => {
     const { user, loading } = useSelector((state) => state.auth);
     return (
         <nav className="navbar">
-            <div className="container d-flex align-items-center justify-content-between">
+            <div className="container">
                 <div>
                     <h3 className="text-white">ShopX</h3>
                 </div>

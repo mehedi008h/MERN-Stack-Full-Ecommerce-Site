@@ -34,7 +34,7 @@ function App() {
                     exact
                 />
                 <ProtectedRoute
-                    path="/admin/product/new"
+                    path="/admin/products/new"
                     isAdmin={true}
                     component={NewProduct}
                     exact
@@ -47,7 +47,6 @@ function App() {
                 />
                 <ProtectedRoute
                     path="/admin/product/details/:id"
-                    isAdmin={true}
                     component={ProductDetails}
                     exact
                 />

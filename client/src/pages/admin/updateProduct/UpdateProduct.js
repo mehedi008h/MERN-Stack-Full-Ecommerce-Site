@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import {
+    clearErrors,
     getProductDetails,
     updateProduct,
 } from "../../../actions/productAction";
-import { clearErrors } from "../../../actions/userActions";
 import ButtonLoader from "../../../components/loader/ButtonLoader";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../../constants/productsConstants";
 
 import styles from "./UpdateProduct.module.scss";
 
-const UpdateProduct = ({ match, history }) => {
+const UpdateProduct = ({ history }) => {
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
@@ -48,19 +49,20 @@ const UpdateProduct = ({ match, history }) => {
 
     const alert = useAlert();
     const dispatch = useDispatch();
+    let { id } = useParams();
 
-    const { error, product } = useSelector((state) => state.productDetails);
+    const { detailsLoading, error, product } = useSelector(
+        (state) => state.productDetails
+    );
     const {
         loading,
         error: updateError,
         isUpdated,
     } = useSelector((state) => state.product);
 
-    const productId = match.params.id;
-
     useEffect(() => {
-        if (product && product._id !== productId) {
-            dispatch(getProductDetails(productId));
+        if (product && product._id !== id) {
+            dispatch(getProductDetails(id));
         } else {
             setName(product.name);
             setPrice(product.price);
@@ -89,16 +91,7 @@ const UpdateProduct = ({ match, history }) => {
             alert.success("Product updated successfully");
             dispatch({ type: UPDATE_PRODUCT_RESET });
         }
-    }, [
-        dispatch,
-        alert,
-        error,
-        isUpdated,
-        history,
-        updateError,
-        product,
-        productId,
-    ]);
+    }, [dispatch, alert, error, isUpdated, history, updateError, product, id]);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -150,7 +143,7 @@ const UpdateProduct = ({ match, history }) => {
                 <div className="col-md-2">
                     <Sidebar />
                 </div>
-                <div className="col-md-10">
+                <div className="col-md-10" style={{ marginTop: "75px" }}>
                     <div className={styles.product_input}>
                         <div className={styles.form}>
                             <h4>Update Product</h4>

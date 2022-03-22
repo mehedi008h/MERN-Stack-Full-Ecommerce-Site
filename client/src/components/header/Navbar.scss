@@ -1,7 +1,12 @@
 .navbar {
-    background-color: brown;
+    background-color: black;
+    z-index: 1000;
     font-family: var(--font-poppins);
-    position: relative;
+    position: fixed !important;
+    width: 100%;
+    height: 70px;
+    color: black;
+    top: 0;
 
     .container {
         padding: 0rem 1rem;
@@ -11,7 +16,7 @@
             list-style: none;
 
             li {
-                margin: 0.5rem 1rem 0 1rem;
+                margin: 0.1rem 1rem 0 1rem;
                 color: white;
                 a {
                     text-decoration: none;

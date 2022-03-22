@@ -9,7 +9,7 @@ const Dashboard = () => {
                 <div className="col-md-2">
                     <Sidebar />
                 </div>
-                <div className="col-md-10">
+                <div className="col-md-10" style={{ marginTop: "75px" }}>
                     <h1>2</h1>
                 </div>
             </div>

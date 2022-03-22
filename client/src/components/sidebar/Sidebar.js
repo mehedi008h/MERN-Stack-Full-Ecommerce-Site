@@ -57,7 +57,7 @@ const Sidebar = () => {
                 <span>Service</span>
                 <div className="mt-1">
                     <li>
-                        <Link to="/admin/product/new">
+                        <Link to="/admin/products/new">
                             <FiPlusSquare className="me-3" size={25} />
                             Add Product
                         </Link>

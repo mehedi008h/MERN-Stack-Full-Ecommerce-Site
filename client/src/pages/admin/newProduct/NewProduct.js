@@ -17,8 +17,8 @@ const NewProduct = ({ history }) => {
     const [stock, setStock] = useState(0);
     const [seller, setSeller] = useState("");
     const [type, setType] = useState("");
-    const [size, setSize] = useState("");
-    const [color, setColor] = useState("");
+    const [sizes, setSizes] = useState([]);
+    const [colors, setColors] = useState([]);
     const [images, setImages] = useState([]);
     const [imagesPreview, setImagesPreview] = useState([]);
 
@@ -37,8 +37,6 @@ const NewProduct = ({ history }) => {
         "Home",
     ];
     const types = ["New", "Latests"];
-    const sizes = ["30", "32", "34", "36"];
-    const colors = ["White", "Black", "Green", "Blue", "Yellow", "Pink"];
 
     const alert = useAlert();
     const dispatch = useDispatch();
@@ -71,8 +69,8 @@ const NewProduct = ({ history }) => {
         formData.set("stock", stock);
         formData.set("seller", seller);
         formData.set("type", type);
-        formData.set("size", size);
-        formData.set("color", color);
+        formData.set("sizes", sizes);
+        formData.set("colors", colors);
 
         images.forEach((image) => {
             formData.append("images", image);
@@ -216,78 +214,51 @@ const NewProduct = ({ history }) => {
                                         </div>
                                     </div>
                                 </div>
+                                {/* size section  */}
+                                <div className={styles.from_group}>
+                                    <label htmlFor="sizes_field">
+                                        Sizes (coma separated)
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="sizes_field"
+                                        value={sizes}
+                                        onChange={(e) =>
+                                            setSizes(e.target.value.split(","))
+                                        }
+                                    />
+                                </div>
+                                {/* size section  */}
+                                <div className={styles.from_group}>
+                                    <label htmlFor="colors_field">
+                                        Colors (coma separated)
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="colors_field"
+                                        value={colors}
+                                        onChange={(e) =>
+                                            setColors(e.target.value.split(","))
+                                        }
+                                    />
+                                </div>
 
-                                {/* types, sizes & color section  */}
-                                <div className="row">
-                                    <div className="col-md-4">
-                                        <div className={styles.from_group}>
-                                            <label htmlFor="type_field">
-                                                Types
-                                            </label>
-                                            <select
-                                                id="type_field"
-                                                value={type}
-                                                onChange={(e) =>
-                                                    setType(e.target.value)
-                                                }
-                                            >
-                                                {types.map((type) => (
-                                                    <option
-                                                        key={type}
-                                                        value={type}
-                                                    >
-                                                        {type}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4">
-                                        <div className={styles.from_group}>
-                                            <label htmlFor="size_field">
-                                                Size
-                                            </label>
-                                            <select
-                                                id="size_field"
-                                                value={size}
-                                                onChange={(e) =>
-                                                    setSize(e.target.value)
-                                                }
-                                            >
-                                                {sizes.map((size) => (
-                                                    <option
-                                                        key={size}
-                                                        value={size}
-                                                    >
-                                                        {size}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4">
-                                        <div className={styles.from_group}>
-                                            <label htmlFor="color_field">
-                                                Color
-                                            </label>
-                                            <select
-                                                id="color_field"
-                                                value={color}
-                                                onChange={(e) =>
-                                                    setColor(e.target.value)
-                                                }
-                                            >
-                                                {colors.map((color) => (
-                                                    <option
-                                                        key={color}
-                                                        value={color}
-                                                    >
-                                                        {color}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
+                                {/* types section  */}
+                                <div className={styles.from_group}>
+                                    <label htmlFor="type_field">Types</label>
+                                    <select
+                                        id="type_field"
+                                        value={type}
+                                        onChange={(e) =>
+                                            setType(e.target.value)
+                                        }
+                                    >
+                                        {types.map((type) => (
+                                            <option key={type} value={type}>
+                                                {type}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
 
                                 {/* image section  */}

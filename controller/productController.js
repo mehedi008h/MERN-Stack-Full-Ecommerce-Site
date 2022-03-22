@@ -17,7 +17,7 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 
     for (let i = 0; i < images.length; i++) {
         const result = await cloudinary.v2.uploader.upload(images[i], {
-            folder: "products",
+            folder: "shopx/products",
         });
 
         imagesLinks.push({
@@ -28,7 +28,6 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 
     req.body.images = imagesLinks;
     req.body.user = req.user.id;
-
     const product = await Product.create(req.body);
 
     res.status(201).json({
@@ -100,7 +99,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
 
         for (let i = 0; i < images.length; i++) {
             const result = await cloudinary.v2.uploader.upload(images[i], {
-                folder: "products",
+                folder: "shopx/products",
             });
 
             imagesLinks.push({
