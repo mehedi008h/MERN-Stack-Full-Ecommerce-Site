@@ -1,0 +1,69 @@
+.shipping {
+    min-height: calc(100vh - 75px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+
+    .shipping_container {
+        background: rgba(230, 228, 228, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        // backdrop-filter: blur(4px);
+        // -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 2rem;
+        border-radius: 20px;
+        width: 400px;
+        margin-top: 10px;
+
+        .from_group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 15px;
+
+            label {
+                color: black;
+                font-weight: 500;
+                letter-spacing: 1px;
+            }
+
+            input {
+                height: 40px;
+                border-radius: 20px;
+                border: 2px solid green;
+                outline: none;
+                padding: 0.5rem 1rem;
+                background-color: rgb(216, 214, 214);
+                font-size: 16px;
+            }
+
+            select {
+                height: 40px;
+                border-radius: 20px;
+                border: 2px solid green;
+                outline: none;
+                padding: 0.5rem 1rem;
+                background-color: rgb(216, 214, 214);
+                font-size: 16px;
+            }
+
+            button {
+                height: 35px;
+                border-radius: 20px;
+                border: none;
+                width: 80%;
+                margin: 1rem auto;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: 500;
+                transition: all 0.5s ease-in-out;
+
+                &:hover {
+                    width: 90%;
+                }
+            }
+        }
+    }
+}

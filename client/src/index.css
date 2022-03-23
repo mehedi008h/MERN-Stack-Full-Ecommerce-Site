@@ -94,6 +94,80 @@ body {
     color: red;
 }
 
+/* Checkout Steps */
+
+.checkout-progress div {
+    box-sizing: border-box;
+}
+
+.checkout-progress {
+    display: block;
+    clear: both;
+    margin: 20px auto;
+    width: auto;
+    font-family: sans-serif;
+    overflow: auto;
+}
+
+.step {
+    margin: 0;
+    border: 0;
+    letter-spacing: 1px;
+    line-height: 30px;
+    padding: 5px 10px 5px 15px;
+    color: grey;
+    text-decoration: none;
+    cursor: default;
+    font-weight: bold;
+    float: left;
+    height: auto;
+}
+
+.incomplete {
+    background: #eeeeee;
+}
+
+.active-step {
+    background: #fa9c23;
+    color: #fff;
+}
+
+.triangle-active {
+    float: left;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-left: 15px solid #fa9c23;
+    border-bottom: 20px solid transparent;
+    margin-left: -1px;
+}
+
+.triangle2-active {
+    width: 0;
+    float: left;
+    border-top: 20px solid #fa9c23;
+    border-left: 15px solid #fff;
+    border-bottom: 20px solid #fa9c23;
+    margin-right: -1px;
+}
+
+.triangle-incomplete {
+    float: left;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-left: 15px solid #eeeeee;
+    border-bottom: 20px solid transparent;
+    margin-left: -1px;
+}
+
+.triangle2-incomplete {
+    width: 0;
+    float: left;
+    border-top: 20px solid #eeeeee;
+    border-left: 15px solid #fff;
+    border-bottom: 20px solid #eeeeee;
+    margin-right: -1px;
+}
+
 .image_file {
     height: 40px;
     width: 300px;
