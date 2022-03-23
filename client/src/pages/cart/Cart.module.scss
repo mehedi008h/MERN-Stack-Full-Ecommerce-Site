@@ -1,0 +1,87 @@
+.cart {
+    min-height: 100vh;
+    display: flex;
+    margin-top: 75px;
+    font-family: var(--font-poppins);
+
+    .cart_container {
+        padding: 1rem;
+        .cart_item {
+            .item_info {
+                display: flex;
+                align-items: center;
+
+                a {
+                    text-decoration: none;
+                }
+
+                .stockCounter {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+
+                    span {
+                        height: 30px;
+                        width: 30px;
+                        padding: 5px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        border: 2px solid var(--color-gray);
+                        &:nth-child(1) {
+                            &:hover {
+                                background-color: rgb(182, 9, 9);
+                                border: 2px solid maroon;
+                                color: white;
+                            }
+                        }
+                        &:nth-child(3) {
+                            &:hover {
+                                background-color: rgb(12, 146, 12);
+                                border: 2px solid green;
+                                color: white;
+                            }
+                        }
+                    }
+
+                    input {
+                        width: 30%;
+                        padding: 5px 10px;
+                        border-radius: 20px;
+                        outline: 2px solid green;
+                        border: none;
+                        text-align: center;
+                        color: black;
+                    }
+                }
+            }
+
+            button {
+                border: none;
+                padding: 5px 15px;
+                border-radius: 20px;
+            }
+        }
+    }
+
+    .order_summary {
+        padding: 1rem;
+        button {
+            height: 35px;
+            border-radius: 20px;
+            border: none;
+            width: 80%;
+            margin: 1rem auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: all 0.5s ease-in-out;
+
+            &:hover {
+                width: 90%;
+            }
+        }
+    }
+}

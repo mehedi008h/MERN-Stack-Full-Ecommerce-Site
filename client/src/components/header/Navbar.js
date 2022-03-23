@@ -17,6 +17,7 @@ const Navbar = () => {
     const [toggle, setToggle] = useState(false);
     const [dropdown, setDropdown] = useState(false);
     const { user, loading } = useSelector((state) => state.auth);
+    const { cartItems } = useSelector((state) => state.cart);
     return (
         <nav className="navbar">
             <div className="container">
@@ -37,8 +38,14 @@ const Navbar = () => {
                 </div>
                 <div className="nav_links">
                     <ul className="d-flex align-items-center">
-                        <li>
-                            <AiOutlineShoppingCart size={25} />
+                        <li className="cart">
+                            <Link to="/cart">
+                                <AiOutlineShoppingCart
+                                    className="icon"
+                                    size={25}
+                                />
+                                <span>{cartItems?.length}</span>
+                            </Link>
                         </li>
                         {loading ? (
                             <>

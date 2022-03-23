@@ -6,6 +6,7 @@ import { clearErrors, getProductDetails } from "../../actions/productAction";
 import Loader from "../../components/loader/Loader";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import styles from "./SingleProduct.module.scss";
+import { addItemToCart } from "../../actions/cartActions";
 
 const SingleProduct = () => {
     const [quantity, setQuantity] = useState(1);
@@ -46,6 +47,11 @@ const SingleProduct = () => {
             dispatch(clearErrors());
         }
     }, [dispatch, alert, error, id]);
+
+    const addToCart = () => {
+        dispatch(addItemToCart(id, quantity));
+        alert.success("Item Added to Cart");
+    };
     return (
         <div className={styles.product_details}>
             {loading ? (
@@ -165,7 +171,12 @@ const SingleProduct = () => {
                                     </p>
                                     {/* butoon  */}
                                     <div className={styles.button}>
-                                        <button>Add To Cart</button>
+                                        <button
+                                            disabled={product.stock === 0}
+                                            onClick={addToCart}
+                                        >
+                                            Add To Cart
+                                        </button>
                                         <button>Buy Now</button>
                                     </div>
                                 </div>
