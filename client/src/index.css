@@ -86,6 +86,14 @@ body {
     color: #f8ce0b;
 }
 
+.greenColor {
+    color: green;
+}
+
+.redColor {
+    color: red;
+}
+
 .image_file {
     height: 40px;
     width: 300px;

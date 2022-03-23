@@ -4,9 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { clearErrors, getProductDetails } from "../../actions/productAction";
 import Loader from "../../components/loader/Loader";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import styles from "./SingleProduct.module.scss";
 
 const SingleProduct = () => {
+    const [quantity, setQuantity] = useState(1);
+    const [preview, setPreview] = useState(0);
+
     const dispatch = useDispatch();
     const alert = useAlert();
 
@@ -16,7 +20,23 @@ const SingleProduct = () => {
         (state) => state.productDetails
     );
 
-    const [preview, setPreview] = useState(0);
+    const increaseQty = () => {
+        const count = document.querySelector(".count");
+
+        if (count.valueAsNumber >= product.stock) return;
+
+        const qty = count.valueAsNumber + 1;
+        setQuantity(qty);
+    };
+
+    const decreaseQty = () => {
+        const count = document.querySelector(".count");
+
+        if (count.valueAsNumber <= 1) return;
+
+        const qty = count.valueAsNumber - 1;
+        setQuantity(qty);
+    };
 
     useEffect(() => {
         dispatch(getProductDetails(id));
@@ -37,25 +57,35 @@ const SingleProduct = () => {
                     <div className="container mt-3">
                         <div className="row">
                             <div className="col-md-6">
-                                <div className={styles.preview_image}>
-                                    <img
-                                        src={product?.images[preview].url}
-                                        alt=""
-                                    />
-                                </div>
-                                <div className={styles.image_thumbline}>
-                                    {product?.images.map((image, index) => (
-                                        <div key={image._id}>
+                                {product.images && (
+                                    <>
+                                        <div className={styles.preview_image}>
                                             <img
-                                                src={image.url}
-                                                onClick={() =>
-                                                    setPreview(index)
+                                                src={
+                                                    product?.images[preview].url
                                                 }
                                                 alt=""
                                             />
                                         </div>
-                                    ))}
-                                </div>
+                                        <div className={styles.image_thumbline}>
+                                            {product?.images.map(
+                                                (image, index) => (
+                                                    <div key={image._id}>
+                                                        <img
+                                                            src={image.url}
+                                                            onClick={() =>
+                                                                setPreview(
+                                                                    index
+                                                                )
+                                                            }
+                                                            alt=""
+                                                        />
+                                                    </div>
+                                                )
+                                            )}
+                                        </div>
+                                    </>
+                                )}
                             </div>
                             <div className="col-md-6">
                                 <div className={styles.Product_info}>
@@ -86,6 +116,57 @@ const SingleProduct = () => {
                                             Colors
                                         </label>
                                         <div></div>
+                                    </div>
+                                    {/* stock counter  */}
+                                    <div className={styles.stock_counter}>
+                                        <span
+                                            className="minus"
+                                            onClick={decreaseQty}
+                                        >
+                                            <AiOutlineMinus />
+                                        </span>
+
+                                        <input
+                                            className="count"
+                                            type="number"
+                                            value={quantity}
+                                            readOnly
+                                        />
+
+                                        <span
+                                            className="plus"
+                                            onClick={increaseQty}
+                                        >
+                                            <AiOutlinePlus />
+                                        </span>
+                                    </div>
+                                    {/* stock status  */}
+                                    <p className="mt-3">
+                                        Status:
+                                        <span
+                                            id="stock_status"
+                                            className={
+                                                product.stock > 0
+                                                    ? "greenColor ms-2"
+                                                    : "redColor ms-2"
+                                            }
+                                        >
+                                            {product.stock > 0
+                                                ? "In Stock"
+                                                : "Out of Stock"}
+                                        </span>
+                                    </p>
+                                    {/* product seller  */}
+                                    <p id="product_seller mb-3">
+                                        Sold by:
+                                        <strong className="ms-2">
+                                            {product.seller}
+                                        </strong>
+                                    </p>
+                                    {/* butoon  */}
+                                    <div className={styles.button}>
+                                        <button>Add To Cart</button>
+                                        <button>Buy Now</button>
                                     </div>
                                 </div>
                             </div>
