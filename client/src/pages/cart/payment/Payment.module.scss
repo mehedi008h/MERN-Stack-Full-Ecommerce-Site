@@ -1,0 +1,9 @@
+.payment {
+    min-height: calc(100vh - 75px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    font-family: var(--font-poppins);
+}

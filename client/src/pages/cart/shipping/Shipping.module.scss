@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+    font-family: var(--font-poppins);
 
     .shipping_container {
         background: rgba(230, 228, 228, 0.25);
@@ -32,7 +33,7 @@
             input {
                 height: 40px;
                 border-radius: 20px;
-                border: 2px solid green;
+                border: 2px solid white;
                 outline: none;
                 padding: 0.5rem 1rem;
                 background-color: rgb(216, 214, 214);
@@ -42,7 +43,7 @@
             select {
                 height: 40px;
                 border-radius: 20px;
-                border: 2px solid green;
+                border: 2px solid white;
                 outline: none;
                 padding: 0.5rem 1rem;
                 background-color: rgb(216, 214, 214);

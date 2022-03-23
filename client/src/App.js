@@ -17,6 +17,8 @@ import UpdateProduct from "./pages/admin/updateProduct/UpdateProduct";
 import SingleProduct from "./pages/singleProduct/SingleProduct";
 import Cart from "./pages/cart/Cart";
 import Shipping from "./pages/cart/shipping/Shipping";
+import ConfirmOrder from "./pages/cart/confirmOrder/ConfirmOrder";
+import Payment from "./pages/cart/payment/Payment";
 
 function App() {
     useEffect(() => {
@@ -34,6 +36,8 @@ function App() {
                 <Route path="/cart" component={Cart} exact />
 
                 <ProtectedRoute path="/shipping" component={Shipping} />
+                <ProtectedRoute path="/confirm" component={ConfirmOrder} />
+                <ProtectedRoute path="/payment" component={Payment} />
                 <ProtectedRoute
                     path="/admin"
                     isAdmin={true}
