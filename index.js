@@ -20,10 +20,12 @@ app.use(fileUpload());
 const auth = require("./routes/auth");
 const products = require("./routes/product");
 const payment = require("./routes/payment");
+const order = require("./routes/order");
 
 app.use("/api/v1", auth);
 app.use("/api/v1", products);
 app.use("/api/v1", payment);
+app.use("/api/v1", order);
 
 // connecting to database
 connectDatabase();
