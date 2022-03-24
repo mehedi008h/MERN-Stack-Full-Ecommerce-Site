@@ -40,7 +40,7 @@ const Sidebar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/admin/orders">
+                        <Link to="/admin/users">
                             <BiUserCircle className="me-3" size={25} />
                             Users
                         </Link>

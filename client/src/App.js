@@ -25,6 +25,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Payment from "./pages/cart/payment/Payment";
 import Success from "./pages/cart/success/Success";
+import Users from "./pages/admin/users/Users";
 
 function App() {
     const [stripeApiKey, setStripeApiKey] = useState("");
@@ -85,6 +86,12 @@ function App() {
                     path="/admin/product/:id"
                     isAdmin={true}
                     component={UpdateProduct}
+                    exact
+                />
+                <ProtectedRoute
+                    path="/admin/users"
+                    isAdmin={true}
+                    component={Users}
                     exact
                 />
             </Router>
