@@ -4,9 +4,14 @@ import { Table } from "react-bootstrap";
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { allUsers, clearErrors } from "../../../actions/userActions";
+import {
+    allUsers,
+    clearErrors,
+    deleteUser,
+} from "../../../actions/userActions";
 import Loader from "../../../components/loader/Loader";
 import Sidebar from "../../../components/sidebar/Sidebar";
+import { DELETE_USER_RESET } from "../../../constants/userConstants";
 import styles from "./Users.module.scss";
 
 const Users = ({ history }) => {
@@ -14,6 +19,7 @@ const Users = ({ history }) => {
     const dispatch = useDispatch();
 
     const { loading, error, users } = useSelector((state) => state.allUsers);
+    const { isDeleted } = useSelector((state) => state.user);
 
     useEffect(() => {
         dispatch(allUsers());
@@ -22,8 +28,17 @@ const Users = ({ history }) => {
             alert.error(error);
             dispatch(clearErrors());
         }
-    }, [dispatch, alert, error, history]);
-    console.log(users);
+
+        if (isDeleted) {
+            alert.success("User deleted successfully");
+            history.push("/admin/users");
+            dispatch({ type: DELETE_USER_RESET });
+        }
+    }, [dispatch, alert, error, isDeleted, history]);
+
+    const deleteUserHandler = (id) => {
+        dispatch(deleteUser(id));
+    };
     return (
         <div className={styles.users}>
             <div className="row">
@@ -75,14 +90,13 @@ const Users = ({ history }) => {
                                                             size={20}
                                                         />
                                                     </Link>
-                                                    <Link
-                                                        to={`/admin/user/${user._id}`}
+                                                    <button
+                                                        onClick={() =>
+                                                            deleteUserHandler(
+                                                                user._id
+                                                            )
+                                                        }
                                                     >
-                                                        <AiOutlineEdit
-                                                            size={20}
-                                                        />
-                                                    </Link>
-                                                    <button>
                                                         <AiOutlineDelete
                                                             size={20}
                                                         />

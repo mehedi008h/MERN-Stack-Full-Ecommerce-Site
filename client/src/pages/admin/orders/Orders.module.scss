@@ -1,0 +1,53 @@
+.orders {
+    width: 100%;
+    min-height: 88.5vh;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+
+    .table {
+        background-color: white;
+        border-radius: 10px;
+        padding: 1rem;
+
+        .actions {
+            a {
+                text-decoration: none;
+                padding: 5px;
+                border-radius: 5px;
+                margin: 5px;
+
+                &:nth-child(1) {
+                    background-color: #00adb5;
+                    color: #fff;
+                    &:hover {
+                        color: #fff;
+                        background-color: #0b949b;
+                    }
+                }
+                &:nth-child(2) {
+                    background-color: #dd6616;
+                    color: #fff;
+                    &:hover {
+                        color: #fff;
+                        background-color: #c95c13;
+                    }
+                }
+            }
+
+            button {
+                padding: 4px;
+                border-radius: 5px;
+                margin: 5px;
+                background-color: #cf3737;
+                color: #fff;
+                border: none;
+
+                &:hover {
+                    color: white;
+                    background-color: #950101;
+                }
+            }
+        }
+    }
+}
