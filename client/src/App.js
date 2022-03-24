@@ -28,6 +28,7 @@ import Success from "./pages/cart/success/Success";
 import Users from "./pages/admin/users/Users";
 import UserDetails from "./pages/admin/users/userDetails/UserDetails";
 import Orders from "./pages/admin/orders/Orders";
+import ProcessOrder from "./pages/admin/orders/processOrder/ProcessOrder";
 
 function App() {
     const [stripeApiKey, setStripeApiKey] = useState("");
@@ -106,6 +107,12 @@ function App() {
                     path="/admin/orders"
                     isAdmin={true}
                     component={Orders}
+                    exact
+                />
+                <ProtectedRoute
+                    path="/admin/order/:id"
+                    isAdmin={true}
+                    component={ProcessOrder}
                     exact
                 />
             </Router>

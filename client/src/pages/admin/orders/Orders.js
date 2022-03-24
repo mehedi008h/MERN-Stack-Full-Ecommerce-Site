@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
-import { allOrders, clearErrors } from "../../../actions/orderActions";
+import {
+    allOrders,
+    clearErrors,
+    deleteOrder,
+} from "../../../actions/orderActions";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,12 +12,14 @@ import Loader from "../../../components/loader/Loader";
 import { Table } from "react-bootstrap";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { DELETE_ORDER_RESET } from "../../../constants/orderConstants";
 
 const Orders = ({ history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
 
     const { loading, error, orders } = useSelector((state) => state.allOrders);
+    const { isDeleted } = useSelector((state) => state.order);
 
     useEffect(() => {
         dispatch(allOrders());
@@ -22,7 +28,17 @@ const Orders = ({ history }) => {
             alert.error(error);
             dispatch(clearErrors());
         }
-    }, [dispatch, alert, error, history]);
+
+        if (isDeleted) {
+            alert.success("Order deleted successfully");
+            history.push("/admin/orders");
+            dispatch({ type: DELETE_ORDER_RESET });
+        }
+    }, [dispatch, alert, error, isDeleted, history]);
+
+    const deleteOrderHandler = (id) => {
+        dispatch(deleteOrder(id));
+    };
 
     return (
         <div className={styles.orders}>
@@ -64,13 +80,19 @@ const Orders = ({ history }) => {
                                                 <td>{order?.orderStatus}</td>
                                                 <td className={styles.actions}>
                                                     <Link
-                                                        to={`/admin/user/details/${order._id}`}
+                                                        to={`/admin/order/${order._id}`}
                                                     >
                                                         <AiOutlineEye
                                                             size={20}
                                                         />
                                                     </Link>
-                                                    <button>
+                                                    <button
+                                                        onClick={() =>
+                                                            deleteOrderHandler(
+                                                                order._id
+                                                            )
+                                                        }
+                                                    >
                                                         <AiOutlineDelete
                                                             size={20}
                                                         />
