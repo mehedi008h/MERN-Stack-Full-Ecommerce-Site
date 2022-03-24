@@ -81,7 +81,7 @@ const Navbar = () => {
                                         {dropdown && (
                                             <div className="dropdown">
                                                 <Link
-                                                    to="/profile"
+                                                    to="/me"
                                                     onClick={() =>
                                                         setDropdown(false)
                                                     }
