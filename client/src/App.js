@@ -5,7 +5,7 @@ import Navbar from "./components/header/Navbar";
 import Login from "./pages/auth/login/Login";
 import Products from "./pages/products/Products";
 import Register from "./pages/auth/register/Register";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import store from "./store";
 import { loadUser } from "./actions/userActions";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
@@ -18,11 +18,26 @@ import SingleProduct from "./pages/singleProduct/SingleProduct";
 import Cart from "./pages/cart/Cart";
 import Shipping from "./pages/cart/shipping/Shipping";
 import ConfirmOrder from "./pages/cart/confirmOrder/ConfirmOrder";
+import axios from "axios";
+
+//  payment
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import Payment from "./pages/cart/payment/Payment";
+import Success from "./pages/cart/success/Success";
 
 function App() {
+    const [stripeApiKey, setStripeApiKey] = useState("");
     useEffect(() => {
         store.dispatch(loadUser());
+
+        async function getStripApiKey() {
+            const { data } = await axios.get("/api/v1/stripeapi");
+
+            setStripeApiKey(data.stripeApiKey);
+        }
+
+        getStripApiKey();
     }, []);
     return (
         <div className="app">
@@ -37,7 +52,12 @@ function App() {
 
                 <ProtectedRoute path="/shipping" component={Shipping} />
                 <ProtectedRoute path="/confirm" component={ConfirmOrder} />
-                <ProtectedRoute path="/payment" component={Payment} />
+                {stripeApiKey && (
+                    <Elements stripe={loadStripe(stripeApiKey)}>
+                        <ProtectedRoute path="/payment" component={Payment} />
+                    </Elements>
+                )}
+                <ProtectedRoute path="/success" component={Success} />
                 <ProtectedRoute
                     path="/admin"
                     isAdmin={true}
