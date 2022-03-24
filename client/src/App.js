@@ -26,6 +26,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import Payment from "./pages/cart/payment/Payment";
 import Success from "./pages/cart/success/Success";
 import Users from "./pages/admin/users/Users";
+import UserDetails from "./pages/admin/users/userDetails/UserDetails";
 
 function App() {
     const [stripeApiKey, setStripeApiKey] = useState("");
@@ -92,6 +93,12 @@ function App() {
                     path="/admin/users"
                     isAdmin={true}
                     component={Users}
+                    exact
+                />
+                <ProtectedRoute
+                    path="/admin/user/details/:id"
+                    isAdmin={true}
+                    component={UserDetails}
                     exact
                 />
             </Router>

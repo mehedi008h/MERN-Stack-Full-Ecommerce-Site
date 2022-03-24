@@ -7,7 +7,12 @@ import {
     productReducer,
     productsReducer,
 } from "./reducers/productReducers";
-import { allUsersReducer, authReducer } from "./reducers/userReducers";
+import {
+    allUsersReducer,
+    authReducer,
+    userDetailsReducer,
+    userReducer,
+} from "./reducers/userReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import { newOrderReducer } from "./reducers/orderReducers";
 
@@ -20,6 +25,8 @@ const reducer = combineReducers({
     cart: cartReducer,
     newOrder: newOrderReducer,
     allUsers: allUsersReducer,
+    user: userReducer,
+    userDetails: userDetailsReducer,
 });
 
 let initialState = {
