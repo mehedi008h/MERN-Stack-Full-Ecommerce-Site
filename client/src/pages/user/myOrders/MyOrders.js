@@ -1,0 +1,179 @@
+import React, { Fragment, useEffect } from "react";
+import Loader from "../../../components/loader/Loader";
+import ProfileLink from "../../../components/profileLinks/ProfileLink";
+
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./MyOrders.module.scss";
+import { clearErrors, myOrders } from "../../../actions/orderActions";
+
+const MyOrders = () => {
+    const alert = useAlert();
+    const dispatch = useDispatch();
+
+    const { loading, error, orders } = useSelector((state) => state.myOrders);
+
+    useEffect(() => {
+        dispatch(myOrders());
+
+        if (error) {
+            alert.error(error);
+            dispatch(clearErrors());
+        }
+    }, [dispatch, alert, error]);
+    return (
+        <div className={styles.orders}>
+            <div className="container" style={{ marginTop: "85px" }}>
+                <div className="row g-3">
+                    <div className="col-md-3">
+                        <ProfileLink />
+                    </div>
+                    <div className="col-md-9">
+                        {loading ? (
+                            <Loader />
+                        ) : (
+                            <>
+                                {orders && (
+                                    <Fragment>
+                                        <div
+                                            className={styles.orders_container}
+                                        >
+                                            <div className="d-flex align-items-center justify-content-between mb-2 ps-2 pe-2 pt-2">
+                                                <h5>
+                                                    Total Orders :
+                                                    <span className="ms-2 text-success">
+                                                        {orders.length}
+                                                    </span>
+                                                </h5>
+                                                <h5>
+                                                    Total Spend :
+                                                    <span className="ms-2 text-success">
+                                                        {orders.length}
+                                                    </span>
+                                                </h5>
+                                            </div>
+                                            <div>
+                                                <div className="row">
+                                                    <div className="col-md-4">
+                                                        <p className="fw-bold">
+                                                            Order ID
+                                                        </p>
+                                                    </div>
+                                                    <div className="col-md-2">
+                                                        <p className="fw-bold">
+                                                            Quantity
+                                                        </p>
+                                                    </div>
+                                                    <div className="col-md-2">
+                                                        <p className="fw-bold">
+                                                            Amount
+                                                        </p>
+                                                    </div>
+                                                    <div className="col-md-2">
+                                                        <p className="fw-bold">
+                                                            Status
+                                                        </p>
+                                                    </div>
+                                                    <div className="col-md-2">
+                                                        <p className="fw-bold">
+                                                            Actions
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr className="text-primary" />
+                                            {orders.map((order) => (
+                                                <div>
+                                                    <div className="row">
+                                                        <div className="col-md-4">
+                                                            <p>{order?._id}</p>
+                                                        </div>
+                                                        <div className="col-md-2">
+                                                            <p>
+                                                                {
+                                                                    order
+                                                                        ?.orderItems
+                                                                        .length
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                        <div className="col-md-2">
+                                                            <p>
+                                                                $
+                                                                {
+                                                                    order?.totalPrice
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                        <div className="col-md-2">
+                                                            {/* Delivered  */}
+                                                            {order?.orderStatus ===
+                                                                "Delivered" && (
+                                                                <>
+                                                                    <p
+                                                                        style={{
+                                                                            color: "green",
+                                                                        }}
+                                                                    >
+                                                                        {
+                                                                            order?.orderStatus
+                                                                        }
+                                                                    </p>
+                                                                </>
+                                                            )}
+                                                            {/* Shipped */}
+                                                            {order?.orderStatus ===
+                                                                "Shipped" && (
+                                                                <>
+                                                                    <p
+                                                                        style={{
+                                                                            color: "skyblue",
+                                                                        }}
+                                                                    >
+                                                                        {
+                                                                            order?.orderStatus
+                                                                        }
+                                                                    </p>
+                                                                </>
+                                                            )}
+                                                            {/* Processing  */}
+                                                            {order?.orderStatus ===
+                                                                "Processing" && (
+                                                                <>
+                                                                    <p
+                                                                        style={{
+                                                                            color: "#DCAB2F",
+                                                                        }}
+                                                                    >
+                                                                        {
+                                                                            order?.orderStatus
+                                                                        }
+                                                                    </p>
+                                                                </>
+                                                            )}
+                                                        </div>
+                                                        <div className="col-md-2">
+                                                            <button
+                                                                className={
+                                                                    styles.view_button
+                                                                }
+                                                            >
+                                                                View
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </Fragment>
+                                )}
+                            </>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default MyOrders;

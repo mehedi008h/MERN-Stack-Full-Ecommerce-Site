@@ -1,0 +1,24 @@
+.orders {
+    display: flex;
+    background-color: #e5e5e5;
+    min-height: 100vh;
+    font-family: var(--font-poppins);
+
+    .orders_container {
+        background-color: #ffffff;
+        padding: 1rem;
+        border-radius: 10px;
+
+        .view_button {
+            border: none;
+            background-color: #e5e5f3;
+            color: #5b5bd6;
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: all 0.5s ease;
+            &:hover {
+                background-color: #eeeef3;
+            }
+        }
+    }
+}

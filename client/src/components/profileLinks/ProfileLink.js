@@ -42,7 +42,7 @@ const ProfileLink = () => {
                                 />
                                 Password
                             </Link>
-                            <Link to="/me/password">
+                            <Link to="/orders/me">
                                 <MdFavoriteBorder className="me-3" size={25} />
                                 My Order
                             </Link>

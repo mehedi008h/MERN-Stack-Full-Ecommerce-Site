@@ -32,6 +32,7 @@ import ProcessOrder from "./pages/admin/orders/processOrder/ProcessOrder";
 import Profile from "./pages/user/Profile";
 import UpdateProfile from "./pages/user/updateProfile/UpdateProfile";
 import ChangePassword from "./pages/user/changePassword/ChangePassword";
+import MyOrders from "./pages/user/myOrders/MyOrders";
 
 function App() {
     const [stripeApiKey, setStripeApiKey] = useState("");
@@ -68,6 +69,7 @@ function App() {
                     component={ChangePassword}
                     exact
                 />
+                <ProtectedRoute path="/orders/me" component={MyOrders} exact />
 
                 <ProtectedRoute path="/shipping" component={Shipping} />
                 <ProtectedRoute path="/confirm" component={ConfirmOrder} />
