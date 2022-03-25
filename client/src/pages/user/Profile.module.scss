@@ -2,4 +2,34 @@
     display: flex;
     background-color: #e5e5e5;
     min-height: 100vh;
+
+    .profile_container {
+        background-color: #ffffff;
+        border-radius: 10px;
+
+        div {
+            a {
+                text-decoration: none;
+                background-color: #f2effe;
+                padding: 5px 15px;
+                border: none;
+                border-radius: 20px;
+                color: #8067f8;
+                transition: all 0.5s ease-in-out;
+
+                &:hover {
+                    background-color: #ddd9e9;
+                }
+            }
+        }
+
+        .image {
+            text-align: center;
+            img {
+                height: 250px;
+                width: 250px;
+                border-radius: 50%;
+            }
+        }
+    }
 }
