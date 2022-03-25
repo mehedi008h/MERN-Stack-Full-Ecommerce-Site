@@ -30,6 +30,7 @@ import UserDetails from "./pages/admin/users/userDetails/UserDetails";
 import Orders from "./pages/admin/orders/Orders";
 import ProcessOrder from "./pages/admin/orders/processOrder/ProcessOrder";
 import Profile from "./pages/user/Profile";
+import UpdateProfile from "./pages/user/updateProfile/UpdateProfile";
 
 function App() {
     const [stripeApiKey, setStripeApiKey] = useState("");
@@ -55,7 +56,12 @@ function App() {
                 <Route path="/product/:id" component={SingleProduct} exact />
                 <Route path="/cart" component={Cart} exact />
 
-                <ProtectedRoute path="/me" component={Profile} />
+                <ProtectedRoute path="/me" component={Profile} exact />
+                <ProtectedRoute
+                    path="/me/update"
+                    component={UpdateProfile}
+                    exact
+                />
 
                 <ProtectedRoute path="/shipping" component={Shipping} />
                 <ProtectedRoute path="/confirm" component={ConfirmOrder} />

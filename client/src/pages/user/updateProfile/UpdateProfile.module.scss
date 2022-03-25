@@ -1,0 +1,58 @@
+.update_profile {
+    display: flex;
+    background-color: #e5e5e5;
+    min-height: 100vh;
+    font-family: var(--font-poppins);
+
+    .form_container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 1rem;
+
+        .form {
+            width: 400px;
+            margin: 10px auto;
+
+            .from_group {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                margin-top: 15px;
+
+                label {
+                    color: black;
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                    text-align: left;
+                    font-size: 16px;
+                }
+
+                input {
+                    height: 40px;
+                    border-radius: 20px;
+                    border: 2px solid #fff;
+                    outline: none;
+                    padding: 0.5rem 1rem;
+                    background-color: rgb(216, 214, 214);
+                    font-size: 16px;
+                }
+                button {
+                    height: 35px;
+                    border-radius: 20px;
+                    border: none;
+                    width: 80%;
+                    margin: 1rem auto;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    font-weight: 500;
+                    font-size: 16px;
+                    transition: all 0.5s ease-in-out;
+
+                    &:hover {
+                        width: 90%;
+                    }
+                }
+            }
+        }
+    }
+}
