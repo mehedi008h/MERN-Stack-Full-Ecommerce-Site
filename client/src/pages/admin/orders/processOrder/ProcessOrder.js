@@ -178,6 +178,9 @@ const ProcessOrder = ({ match }) => {
                                             <option value="Processing">
                                                 Processing
                                             </option>
+                                            <option value="On The Way">
+                                                On The Way
+                                            </option>
                                             <option value="Shipped">
                                                 Shipped
                                             </option>

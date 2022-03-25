@@ -6,6 +6,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./MyOrders.module.scss";
 import { clearErrors, myOrders } from "../../../actions/orderActions";
+import { Link } from "react-router-dom";
 
 const MyOrders = () => {
     const alert = useAlert();
@@ -138,6 +139,21 @@ const MyOrders = () => {
                                                             )}
                                                             {/* Processing  */}
                                                             {order?.orderStatus ===
+                                                                "On The Way" && (
+                                                                <>
+                                                                    <p
+                                                                        style={{
+                                                                            color: "#DCAB2F",
+                                                                        }}
+                                                                    >
+                                                                        {
+                                                                            order?.orderStatus
+                                                                        }
+                                                                    </p>
+                                                                </>
+                                                            )}
+                                                            {/* Processing  */}
+                                                            {order?.orderStatus ===
                                                                 "Processing" && (
                                                                 <>
                                                                     <p
@@ -153,13 +169,14 @@ const MyOrders = () => {
                                                             )}
                                                         </div>
                                                         <div className="col-md-2">
-                                                            <button
+                                                            <Link
+                                                                to={`/order/${order?._id}`}
                                                                 className={
                                                                     styles.view_button
                                                                 }
                                                             >
                                                                 View
-                                                            </button>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </div>
