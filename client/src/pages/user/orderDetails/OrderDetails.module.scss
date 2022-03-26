@@ -7,7 +7,20 @@
     .details {
         background-color: #ffffff;
         border-radius: 10px;
-        padding: 1rem;
+
+        div {
+            button {
+                border: none;
+                background-color: #f8ecc3;
+                padding: 5px 15px;
+                border-radius: 20px;
+                transition: all 0.5s;
+
+                &:hover {
+                    background-color: #e4dcc2;
+                }
+            }
+        }
 
         .done {
             color: aqua;

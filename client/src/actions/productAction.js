@@ -21,24 +21,32 @@ import {
     UPDATE_PRODUCT_SUCCESS,
 } from "../constants/productsConstants";
 
-// get products for user
-export const getProducts = () => async (dispatch) => {
-    try {
-        dispatch({ type: ALL_PRODUCTS_REQUEST });
+// get product for user
+export const getProducts =
+    (keyword = "", currentPage = 1, price, category, rating = 0) =>
+    async (dispatch) => {
+        try {
+            dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get(`/api/v1/products`);
+            let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&ratings[gte]=${rating}`;
 
-        dispatch({
-            type: ALL_PRODUCTS_SUCCESS,
-            payload: data,
-        });
-    } catch (error) {
-        dispatch({
-            type: ALL_PRODUCTS_FAIL,
-            payload: error.response.data.message,
-        });
-    }
-};
+            if (category) {
+                link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&category=${category}&ratings[gte]=${rating}`;
+            }
+
+            const { data } = await axios.get(link);
+
+            dispatch({
+                type: ALL_PRODUCTS_SUCCESS,
+                payload: data,
+            });
+        } catch (error) {
+            dispatch({
+                type: ALL_PRODUCTS_FAIL,
+                payload: error.response.data.message,
+            });
+        }
+    };
 
 // create new produtc by admin
 export const newProduct = (productData) => async (dispatch) => {

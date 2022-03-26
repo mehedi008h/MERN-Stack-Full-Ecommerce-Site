@@ -3,6 +3,7 @@ const Product = require("../models/product");
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const cloudinary = require("cloudinary");
+const APIFeatures = require("../utils/apiFeatures");
 
 // Create new product   =>   /api/v1/admin/product/new
 exports.newProduct = catchAsyncErrors(async (req, res, next) => {
@@ -36,12 +37,26 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
-// get all products => /api/v1/products
+// get all products => /api/v1/products?keyword=apple
 exports.getProducts = catchAsyncErrors(async (req, res, next) => {
-    const products = await Product.find();
+    const resPerPage = 12;
+    const productsCount = await Product.countDocuments();
+    const apiFeatures = new APIFeatures(Product.find(), req.query)
+        .search()
+        .filter()
+        .pagination(resPerPage);
 
+    let products = await apiFeatures.query;
+    let filteredProductsCount = products.length;
+
+    // apiFeatures.pagination(resPerPage)
+    // products = await apiFeatures.query;
+    console.log("Product", products);
     res.status(200).json({
         success: true,
+        productsCount,
+        resPerPage,
+        filteredProductsCount,
         products,
     });
 });

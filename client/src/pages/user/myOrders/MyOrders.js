@@ -39,7 +39,13 @@ const MyOrders = () => {
                                         <div
                                             className={styles.orders_container}
                                         >
-                                            <div className="d-flex align-items-center justify-content-between mb-2 ps-2 pe-2 pt-2">
+                                            {orders.length === 0 ? (
+                                                <>
+                                                    <h4>No Item Order Yet</h4>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    {/* <div className="d-flex align-items-center justify-content-between mb-2 ps-2 pe-2 pt-2">
                                                 <h5>
                                                     Total Orders :
                                                     <span className="ms-2 text-success">
@@ -52,135 +58,141 @@ const MyOrders = () => {
                                                         {orders.length}
                                                     </span>
                                                 </h5>
-                                            </div>
-                                            <div>
-                                                <div className="row">
-                                                    <div className="col-md-4">
-                                                        <p className="fw-bold">
-                                                            Order ID
-                                                        </p>
-                                                    </div>
-                                                    <div className="col-md-2">
-                                                        <p className="fw-bold">
-                                                            Quantity
-                                                        </p>
-                                                    </div>
-                                                    <div className="col-md-2">
-                                                        <p className="fw-bold">
-                                                            Amount
-                                                        </p>
-                                                    </div>
-                                                    <div className="col-md-2">
-                                                        <p className="fw-bold">
-                                                            Status
-                                                        </p>
-                                                    </div>
-                                                    <div className="col-md-2">
-                                                        <p className="fw-bold">
-                                                            Actions
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr className="text-primary" />
-                                            {orders.map((order) => (
-                                                <div>
-                                                    <div className="row">
-                                                        <div className="col-md-4">
-                                                            <p>{order?._id}</p>
+                                            </div> */}
+                                                    <div>
+                                                        <div className="row">
+                                                            <div className="col-md-4">
+                                                                <p className="fw-bold">
+                                                                    Order ID
+                                                                </p>
+                                                            </div>
+                                                            <div className="col-md-2">
+                                                                <p className="fw-bold">
+                                                                    Quantity
+                                                                </p>
+                                                            </div>
+                                                            <div className="col-md-2">
+                                                                <p className="fw-bold">
+                                                                    Amount
+                                                                </p>
+                                                            </div>
+                                                            <div className="col-md-2">
+                                                                <p className="fw-bold">
+                                                                    Status
+                                                                </p>
+                                                            </div>
+                                                            <div className="col-md-2">
+                                                                <p className="fw-bold">
+                                                                    Actions
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                        <div className="col-md-2">
-                                                            <p>
-                                                                {
-                                                                    order
-                                                                        ?.orderItems
-                                                                        .length
-                                                                }
-                                                            </p>
-                                                        </div>
-                                                        <div className="col-md-2">
-                                                            <p>
-                                                                $
-                                                                {
-                                                                    order?.totalPrice
-                                                                }
-                                                            </p>
-                                                        </div>
-                                                        <div className="col-md-2">
-                                                            {/* Delivered  */}
-                                                            {order?.orderStatus ===
-                                                                "Delivered" && (
-                                                                <>
-                                                                    <p
-                                                                        style={{
-                                                                            color: "green",
-                                                                        }}
-                                                                    >
+                                                    </div>
+                                                    <hr className="text-primary" />
+                                                    {orders.map((order) => (
+                                                        <div>
+                                                            <div className="row">
+                                                                <div className="col-md-4">
+                                                                    <p>
                                                                         {
-                                                                            order?.orderStatus
+                                                                            order?._id
                                                                         }
                                                                     </p>
-                                                                </>
-                                                            )}
-                                                            {/* Shipped */}
-                                                            {order?.orderStatus ===
-                                                                "Shipped" && (
-                                                                <>
-                                                                    <p
-                                                                        style={{
-                                                                            color: "skyblue",
-                                                                        }}
-                                                                    >
+                                                                </div>
+                                                                <div className="col-md-2">
+                                                                    <p>
                                                                         {
-                                                                            order?.orderStatus
+                                                                            order
+                                                                                ?.orderItems
+                                                                                .length
                                                                         }
                                                                     </p>
-                                                                </>
-                                                            )}
-                                                            {/* Processing  */}
-                                                            {order?.orderStatus ===
-                                                                "On The Way" && (
-                                                                <>
-                                                                    <p
-                                                                        style={{
-                                                                            color: "#DCAB2F",
-                                                                        }}
-                                                                    >
+                                                                </div>
+                                                                <div className="col-md-2">
+                                                                    <p>
+                                                                        $
                                                                         {
-                                                                            order?.orderStatus
+                                                                            order?.totalPrice
                                                                         }
                                                                     </p>
-                                                                </>
-                                                            )}
-                                                            {/* Processing  */}
-                                                            {order?.orderStatus ===
-                                                                "Processing" && (
-                                                                <>
-                                                                    <p
-                                                                        style={{
-                                                                            color: "#DCAB2F",
-                                                                        }}
-                                                                    >
-                                                                        {
-                                                                            order?.orderStatus
+                                                                </div>
+                                                                <div className="col-md-2">
+                                                                    {/* Delivered  */}
+                                                                    {order?.orderStatus ===
+                                                                        "Delivered" && (
+                                                                        <>
+                                                                            <p
+                                                                                style={{
+                                                                                    color: "green",
+                                                                                }}
+                                                                            >
+                                                                                {
+                                                                                    order?.orderStatus
+                                                                                }
+                                                                            </p>
+                                                                        </>
+                                                                    )}
+                                                                    {/* Shipped */}
+                                                                    {order?.orderStatus ===
+                                                                        "Shipped" && (
+                                                                        <>
+                                                                            <p
+                                                                                style={{
+                                                                                    color: "skyblue",
+                                                                                }}
+                                                                            >
+                                                                                {
+                                                                                    order?.orderStatus
+                                                                                }
+                                                                            </p>
+                                                                        </>
+                                                                    )}
+                                                                    {/* Processing  */}
+                                                                    {order?.orderStatus ===
+                                                                        "On The Way" && (
+                                                                        <>
+                                                                            <p
+                                                                                style={{
+                                                                                    color: "#DCAB2F",
+                                                                                }}
+                                                                            >
+                                                                                {
+                                                                                    order?.orderStatus
+                                                                                }
+                                                                            </p>
+                                                                        </>
+                                                                    )}
+                                                                    {/* Processing  */}
+                                                                    {order?.orderStatus ===
+                                                                        "Processing" && (
+                                                                        <>
+                                                                            <p
+                                                                                style={{
+                                                                                    color: "#DCAB2F",
+                                                                                }}
+                                                                            >
+                                                                                {
+                                                                                    order?.orderStatus
+                                                                                }
+                                                                            </p>
+                                                                        </>
+                                                                    )}
+                                                                </div>
+                                                                <div className="col-md-2">
+                                                                    <Link
+                                                                        to={`/order/${order?._id}`}
+                                                                        className={
+                                                                            styles.view_button
                                                                         }
-                                                                    </p>
-                                                                </>
-                                                            )}
+                                                                    >
+                                                                        View
+                                                                    </Link>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div className="col-md-2">
-                                                            <Link
-                                                                to={`/order/${order?._id}`}
-                                                                className={
-                                                                    styles.view_button
-                                                                }
-                                                            >
-                                                                View
-                                                            </Link>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
+                                                    ))}
+                                                </>
+                                            )}
                                         </div>
                                     </Fragment>
                                 )}
