@@ -1,14 +1,24 @@
 import React, { Fragment } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../loader/Loader";
 import styles from "./ProfileLink.module.scss";
 import { AiOutlineEdit, AiOutlineLogout, AiOutlineUser } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdFavoriteBorder } from "react-icons/md";
+import { logout } from "../../actions/userActions";
+import { useAlert } from "react-alert";
 
 const ProfileLink = () => {
     const { user, loading } = useSelector((state) => state.auth);
+
+    const alert = useAlert();
+    const dispatch = useDispatch();
+
+    const logoutHandler = () => {
+        dispatch(logout());
+        alert.success("Logged out successfully.");
+    };
     return (
         <Fragment>
             {loading ? (
@@ -46,7 +56,7 @@ const ProfileLink = () => {
                                 <MdFavoriteBorder className="me-3" size={25} />
                                 My Order
                             </Link>
-                            <button>
+                            <button onClick={logoutHandler}>
                                 <AiOutlineLogout className="me-3" size={25} />
                                 Logout
                             </button>

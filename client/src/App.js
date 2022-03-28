@@ -34,6 +34,9 @@ import UpdateProfile from "./pages/user/updateProfile/UpdateProfile";
 import ChangePassword from "./pages/user/changePassword/ChangePassword";
 import MyOrders from "./pages/user/myOrders/MyOrders";
 import OrderDetails from "./pages/user/orderDetails/OrderDetails";
+import ProductReview from "./pages/admin/productReview/ProductReview";
+import ForgotPassword from "./pages/auth/forgotPassword/ForgotPassword";
+import ResetPassword from "./pages/auth/resetPassword/ResetPassword";
 
 function App() {
     const [stripeApiKey, setStripeApiKey] = useState("");
@@ -55,7 +58,18 @@ function App() {
                 <Route path="/" component={Home} exact />
                 <Route path="/login" component={Login} exact />
                 <Route path="/register" component={Register} exact />
+                <Route
+                    path="/password/forgot"
+                    component={ForgotPassword}
+                    exact
+                />
+                <Route
+                    path="/password/reset/:token"
+                    component={ResetPassword}
+                    exact
+                />
                 <Route path="/products" component={Products} exact />
+                <Route path="/products/search/:keyword" component={Products} />
                 <Route path="/product/:id" component={SingleProduct} exact />
                 <Route path="/cart" component={Cart} exact />
 
@@ -136,6 +150,12 @@ function App() {
                     path="/admin/order/:id"
                     isAdmin={true}
                     component={ProcessOrder}
+                    exact
+                />
+                <ProtectedRoute
+                    path="/admin/reviews"
+                    isAdmin={true}
+                    component={ProductReview}
                     exact
                 />
             </Router>

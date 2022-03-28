@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
+import Rating from "@mui/material/Rating";
 import { useParams } from "react-router-dom";
-import { clearErrors, getProductDetails } from "../../actions/productAction";
+import {
+    clearErrors,
+    getProductDetails,
+    newReview,
+} from "../../actions/productAction";
 import Loader from "../../components/loader/Loader";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import styles from "./SingleProduct.module.scss";
 import { addItemToCart } from "../../actions/cartActions";
+import { NEW_REVIEW_RESET } from "../../constants/productsConstants";
+import ListReview from "../reviews/ListReview";
 
-const SingleProduct = () => {
+const SingleProduct = ({ match }) => {
     const [quantity, setQuantity] = useState(1);
     const [preview, setPreview] = useState(0);
+    const [rating, setRating] = useState(0);
+    const [comment, setComment] = useState("");
+
+    const [show, setShow] = useState(false);
 
     const dispatch = useDispatch();
     const alert = useAlert();
@@ -19,6 +30,10 @@ const SingleProduct = () => {
 
     const { loading, error, product } = useSelector(
         (state) => state.productDetails
+    );
+    const { user } = useSelector((state) => state.auth);
+    const { error: reviewError, success } = useSelector(
+        (state) => state.newReview
     );
 
     const increaseQty = () => {
@@ -46,11 +61,35 @@ const SingleProduct = () => {
             alert.error(error);
             dispatch(clearErrors());
         }
-    }, [dispatch, alert, error, id]);
+
+        if (reviewError) {
+            alert.error(reviewError);
+            dispatch(clearErrors());
+        }
+
+        if (success) {
+            alert.success("Reivew posted successfully");
+            dispatch({ type: NEW_REVIEW_RESET });
+        }
+    }, [dispatch, alert, error, reviewError, match.params.id, success]);
 
     const addToCart = () => {
         dispatch(addItemToCart(id, quantity));
         alert.success("Item Added to Cart");
+    };
+
+    const handleShow = () => {
+        setShow(show ? false : true);
+    };
+    const reviewHandler = () => {
+        const formData = new FormData();
+
+        formData.set("rating", rating);
+        formData.set("comment", comment);
+        formData.set("productId", match.params.id);
+
+        dispatch(newReview(formData));
+        setShow(false);
     };
     return (
         <div className={styles.product_details}>
@@ -179,7 +218,86 @@ const SingleProduct = () => {
                                         </button>
                                         <button>Buy Now</button>
                                     </div>
+                                    <div>
+                                        {/* review */}
+                                        {user ? (
+                                            <>
+                                                <button
+                                                    onClick={handleShow}
+                                                    className="btn btn-primary"
+                                                >
+                                                    Submit Review
+                                                </button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <div
+                                                    className="alert alert-danger mt-5"
+                                                    type="alert"
+                                                >
+                                                    Login to post your review.
+                                                </div>
+                                            </>
+                                        )}
+
+                                        {show && (
+                                            <>
+                                                <div
+                                                    className={
+                                                        styles.review_card
+                                                    }
+                                                >
+                                                    <h5>Submit Your Review</h5>
+                                                    <div>
+                                                        <Rating
+                                                            name="simple-controlled"
+                                                            value={rating}
+                                                            onChange={(
+                                                                event,
+                                                                newValue
+                                                            ) => {
+                                                                setRating(
+                                                                    newValue
+                                                                );
+                                                            }}
+                                                        />
+
+                                                        <textarea
+                                                            name="review"
+                                                            id="review"
+                                                            className="form-control mt-3"
+                                                            value={comment}
+                                                            onChange={(e) =>
+                                                                setComment(
+                                                                    e.target
+                                                                        .value
+                                                                )
+                                                            }
+                                                        ></textarea>
+
+                                                        <button
+                                                            className="btn btn-info"
+                                                            onClick={
+                                                                reviewHandler
+                                                            }
+                                                        >
+                                                            Submit
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )}
+                                        {/*end review */}
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                {product.reviews &&
+                                    product.reviews.length > 0 && (
+                                        <ListReview reviews={product.reviews} />
+                                    )}
                             </div>
                         </div>
                     </div>

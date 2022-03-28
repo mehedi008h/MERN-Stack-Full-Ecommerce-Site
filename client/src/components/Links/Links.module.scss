@@ -1,0 +1,17 @@
+.links {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid black;
+
+    a {
+        margin: 0 1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        color: black;
+        font-family: var(--font-poppins);
+    }
+}

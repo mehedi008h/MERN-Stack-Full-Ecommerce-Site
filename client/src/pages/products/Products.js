@@ -77,7 +77,7 @@ const Products = ({ match }) => {
                     <div className={styles.products}>
                         <div
                             className="container"
-                            style={{ marginTop: "80px" }}
+                            style={{ marginTop: "85px" }}
                         >
                             <div className="row g-3">
                                 <div className="col-md-3 mt-5 pe-5">
@@ -110,7 +110,7 @@ const Products = ({ match }) => {
 
                                             <div className="">
                                                 {categories.map((category) => (
-                                                    <p
+                                                    <li
                                                         style={{
                                                             cursor: "pointer",
                                                             listStyleType:
@@ -124,7 +124,7 @@ const Products = ({ match }) => {
                                                         }
                                                     >
                                                         {category}
-                                                    </p>
+                                                    </li>
                                                 ))}
                                             </div>
                                         </div>
@@ -134,7 +134,7 @@ const Products = ({ match }) => {
                                         <div className="mt-5">
                                             <h4 className="mb-3">Ratings</h4>
 
-                                            <ul className="pl-0">
+                                            <div className="pl-0">
                                                 {[5, 4, 3, 2, 1].map((star) => (
                                                     <li
                                                         style={{
@@ -160,7 +160,7 @@ const Products = ({ match }) => {
                                                         </div>
                                                     </li>
                                                 ))}
-                                            </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
