@@ -9,7 +9,11 @@ import {
     newReview,
 } from "../../actions/productAction";
 import Loader from "../../components/loader/Loader";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import {
+    AiOutlineCloseCircle,
+    AiOutlineMinus,
+    AiOutlinePlus,
+} from "react-icons/ai";
 import styles from "./SingleProduct.module.scss";
 import { addItemToCart } from "../../actions/cartActions";
 import { NEW_REVIEW_RESET } from "../../constants/productsConstants";
@@ -99,7 +103,7 @@ const SingleProduct = ({ match }) => {
                 </>
             ) : (
                 <>
-                    <div className="container mt-3">
+                    <div className="container mb-5">
                         <div className="row">
                             <div className="col-md-6">
                                 {product.images && (
@@ -156,12 +160,6 @@ const SingleProduct = ({ match }) => {
                                         </div>
                                     </div>
                                     <p>{product?.description}</p>
-                                    <div>
-                                        <label htmlFor="color_field">
-                                            Colors
-                                        </label>
-                                        <div></div>
-                                    </div>
                                     {/* stock counter  */}
                                     <div className={styles.stock_counter}>
                                         <span
@@ -196,9 +194,11 @@ const SingleProduct = ({ match }) => {
                                                     : "redColor ms-2"
                                             }
                                         >
-                                            {product.stock > 0
-                                                ? "In Stock"
-                                                : "Out of Stock"}
+                                            <b>
+                                                {product.stock > 0
+                                                    ? "In Stock"
+                                                    : "Out of Stock"}
+                                            </b>
                                         </span>
                                     </p>
                                     {/* product seller  */}
@@ -218,14 +218,11 @@ const SingleProduct = ({ match }) => {
                                         </button>
                                         <button>Buy Now</button>
                                     </div>
-                                    <div>
+                                    <div className={styles.review}>
                                         {/* review */}
                                         {user ? (
                                             <>
-                                                <button
-                                                    onClick={handleShow}
-                                                    className="btn btn-primary"
-                                                >
+                                                <button onClick={handleShow}>
                                                     Submit Review
                                                 </button>
                                             </>
@@ -247,7 +244,20 @@ const SingleProduct = ({ match }) => {
                                                         styles.review_card
                                                     }
                                                 >
-                                                    <h5>Submit Your Review</h5>
+                                                    <div className="d-flex align-items-center justify-content-between">
+                                                        <h5>
+                                                            Submit Your Review
+                                                        </h5>
+                                                        <AiOutlineCloseCircle
+                                                            onClick={() =>
+                                                                setShow(false)
+                                                            }
+                                                            className={
+                                                                styles.icon
+                                                            }
+                                                            size={25}
+                                                        />
+                                                    </div>
                                                     <div>
                                                         <Rating
                                                             name="simple-controlled"
@@ -276,7 +286,6 @@ const SingleProduct = ({ match }) => {
                                                         ></textarea>
 
                                                         <button
-                                                            className="btn btn-info"
                                                             onClick={
                                                                 reviewHandler
                                                             }

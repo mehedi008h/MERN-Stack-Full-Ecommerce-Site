@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../actions/productAction";
 import Product from "./Product";
 import { Spinner } from "react-bootstrap";
+import { BsFilter } from "react-icons/bs";
 
 import styles from "./Products.module.scss";
 import Pagination from "react-js-pagination";
@@ -76,90 +77,121 @@ const Products = ({ match }) => {
                 <>
                     <div className={styles.products}>
                         <div
-                            className="container"
-                            style={{ marginTop: "85px" }}
+                            className="container mb-5"
+                            style={{ marginTop: "30px" }}
                         >
                             <div className="row g-3">
-                                <div className="col-md-3 mt-5 pe-5">
-                                    <div className="mt-3">
-                                        <Range
-                                            marks={{
-                                                1: `$1`,
-                                                1000: `$1000`,
+                                <div className="col-md-3 pe-5">
+                                    <div className={styles.filter}>
+                                        <p>
+                                            <BsFilter
+                                                size={30}
+                                                className="me-3"
+                                            />
+                                            Filter
+                                        </p>
+
+                                        <div
+                                            style={{
+                                                marginTop: "70px",
+                                                paddingRight: "15px",
+                                                paddingLeft: "15px",
                                             }}
-                                            min={1}
-                                            max={1000}
-                                            defaultValue={[1, 1000]}
-                                            tipFormatter={(value) =>
-                                                `$${value}`
-                                            }
-                                            tipProps={{
-                                                placement: "top",
-                                                visible: true,
-                                            }}
-                                            value={price}
-                                            onChange={(price) =>
-                                                setPrice(price)
-                                            }
-                                        />
+                                        >
+                                            <Range
+                                                marks={{
+                                                    1: `$1`,
+                                                    1000: `$1000`,
+                                                }}
+                                                min={1}
+                                                max={1000}
+                                                defaultValue={[1, 1000]}
+                                                tipFormatter={(value) =>
+                                                    `$${value}`
+                                                }
+                                                tipProps={{
+                                                    placement: "top",
+                                                    visible: true,
+                                                }}
+                                                value={price}
+                                                onChange={(price) =>
+                                                    setPrice(price)
+                                                }
+                                            />
 
-                                        <hr className="mt-5" />
+                                            <hr className="mt-5 text-primary" />
 
-                                        <div className="mt-5">
-                                            <h4 className="mb-3">Categories</h4>
+                                            <div className="mt-3">
+                                                <h4 className="mb-3">
+                                                    Categories
+                                                </h4>
 
-                                            <div className="">
-                                                {categories.map((category) => (
-                                                    <li
-                                                        style={{
-                                                            cursor: "pointer",
-                                                            listStyleType:
-                                                                "none",
-                                                        }}
-                                                        key={category}
-                                                        onClick={() =>
-                                                            setCategory(
-                                                                category
-                                                            )
-                                                        }
-                                                    >
-                                                        {category}
-                                                    </li>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        <hr className="my-3" />
-
-                                        <div className="mt-5">
-                                            <h4 className="mb-3">Ratings</h4>
-
-                                            <div className="pl-0">
-                                                {[5, 4, 3, 2, 1].map((star) => (
-                                                    <li
-                                                        style={{
-                                                            cursor: "pointer",
-                                                            listStyleType:
-                                                                "none",
-                                                        }}
-                                                        key={star}
-                                                        onClick={() =>
-                                                            setRating(star)
-                                                        }
-                                                    >
-                                                        <div className="rating-outer">
-                                                            <div
-                                                                className="rating-inner"
+                                                <div
+                                                    className={
+                                                        styles.categories
+                                                    }
+                                                >
+                                                    {categories.map(
+                                                        (category) => (
+                                                            <li
                                                                 style={{
-                                                                    width: `${
-                                                                        star *
-                                                                        20
-                                                                    }%`,
+                                                                    cursor: "pointer",
+                                                                    listStyleType:
+                                                                        "none",
                                                                 }}
-                                                            ></div>
-                                                        </div>
-                                                    </li>
-                                                ))}
+                                                                key={category}
+                                                                onClick={() =>
+                                                                    setCategory(
+                                                                        category
+                                                                    )
+                                                                }
+                                                            >
+                                                                {category}
+                                                            </li>
+                                                        )
+                                                    )}
+                                                </div>
+                                            </div>
+
+                                            <hr className="my-3" />
+
+                                            <div className="mt-5">
+                                                <h4 className="mb-3">
+                                                    Ratings
+                                                </h4>
+
+                                                <div className="pl-0">
+                                                    {[5, 4, 3, 2, 1].map(
+                                                        (star) => (
+                                                            <li
+                                                                style={{
+                                                                    cursor: "pointer",
+                                                                    listStyleType:
+                                                                        "none",
+                                                                    margin: "2px 0",
+                                                                }}
+                                                                key={star}
+                                                                onClick={() =>
+                                                                    setRating(
+                                                                        star
+                                                                    )
+                                                                }
+                                                            >
+                                                                <div className="rating-outer">
+                                                                    <div
+                                                                        className="rating-inner"
+                                                                        style={{
+                                                                            width: `${
+                                                                                star *
+                                                                                20
+                                                                            }%`,
+                                                                        }}
+                                                                    ></div>
+                                                                </div>
+                                                            </li>
+                                                        )
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

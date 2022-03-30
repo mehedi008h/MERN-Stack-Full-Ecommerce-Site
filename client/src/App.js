@@ -37,6 +37,8 @@ import OrderDetails from "./pages/user/orderDetails/OrderDetails";
 import ProductReview from "./pages/admin/productReview/ProductReview";
 import ForgotPassword from "./pages/auth/forgotPassword/ForgotPassword";
 import ResetPassword from "./pages/auth/resetPassword/ResetPassword";
+import About from "./pages/about/About";
+import Contact from "./pages/contact/Contact";
 
 function App() {
     const [stripeApiKey, setStripeApiKey] = useState("");
@@ -68,6 +70,8 @@ function App() {
                     component={ResetPassword}
                     exact
                 />
+                <Route path="/about" component={About} exact />
+                <Route path="/contact" component={Contact} exact />
                 <Route path="/products" component={Products} exact />
                 <Route path="/products/search/:keyword" component={Products} />
                 <Route path="/product/:id" component={SingleProduct} exact />

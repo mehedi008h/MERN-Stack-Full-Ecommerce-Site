@@ -1,9 +1,22 @@
 .confirm {
-    min-height: calc(100vh - 75px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: var(--font-poppins);
+
+    .order_summary {
+        background-color: aliceblue;
+        padding: 1.5rem;
+        border-radius: 10px;
+
+        button {
+            background-color: rgb(250, 156, 35);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            color: #fff;
+        }
+    }
 }

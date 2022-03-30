@@ -1,9 +1,8 @@
 .payment {
-    min-height: calc(100vh - 75px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 70px;
+    margin-top: 10px;
     font-family: var(--font-poppins);
 
     .payment_container {
@@ -49,7 +48,8 @@
                 text-transform: uppercase;
                 letter-spacing: 1px;
                 font-weight: 500;
-                color: blueviolet;
+                background-color: rgb(250, 156, 35);
+                color: #fff;
                 transition: all 0.5s ease-in-out;
 
                 &:hover {

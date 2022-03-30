@@ -4,6 +4,31 @@
     align-items: center;
     justify-content: center;
 }
+
+.products {
+    font-family: var(--font-poppins);
+    .filter {
+        margin-bottom: 100px;
+        p {
+            background-color: black;
+            padding: 0.5rem 2rem;
+            color: #fff;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            font-size: 1.2rem;
+            width: 100%;
+        }
+
+        .categories {
+            li {
+                margin: 2px 0;
+                &:hover {
+                    color: var(--color-gray);
+                }
+            }
+        }
+    }
+}
 .product {
     background-color: #f4f4f4;
     padding: 1rem;
@@ -36,14 +61,14 @@
         text-align: center;
         margin-top: 10px;
         color: var(--color-black);
+
+        .product_name {
+            height: 40px;
+        }
     }
 
     .product_rating {
-        background-color: rgba(226, 226, 21, 0.3);
         width: max-content;
-        padding: 5px 10px;
-        border-radius: 20px;
-        border: 2px solid rgb(211, 211, 10);
     }
 
     .link_container {

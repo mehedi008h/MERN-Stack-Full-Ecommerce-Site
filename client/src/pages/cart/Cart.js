@@ -81,6 +81,7 @@ const Cart = ({ history }) => {
                                                     </p>
                                                 </div>
 
+                                                {/* stock counter  */}
                                                 <div className="col-4 col-lg-3 mt-4 mt-lg-0">
                                                     <div
                                                         className={

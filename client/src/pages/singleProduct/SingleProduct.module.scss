@@ -70,7 +70,7 @@
         }
         .button {
             button {
-                padding: 10px 20px;
+                padding: 0.5rem 1rem;
                 border-radius: 25px;
                 margin-top: 10px;
 
@@ -87,7 +87,7 @@
                 }
                 &:nth-child(2) {
                     margin-left: 10px;
-                    border: 2px solid green;
+                    border: 2px solid black;
                     transition: all 0.3s ease-in-out;
 
                     &:hover {
@@ -98,19 +98,53 @@
                 }
             }
         }
-        .review_card {
-            position: absolute;
-            top: 30%;
-            right: 30%;
-            background: #fff;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            padding: 2rem;
-            border-radius: 20px;
-            width: 400px;
-            z-index: 999;
+        .review {
+            margin-top: 20px;
+            button {
+                padding: 0.5rem 1rem;
+                border-radius: 20px;
+                border: 1px solid goldenrod;
+            }
+            .review_card {
+                position: absolute;
+                top: 30%;
+                right: 30%;
+                background: #fff;
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                padding: 2rem;
+                border-radius: 20px;
+                width: 400px;
+                z-index: 999;
+
+                div {
+                    .icon {
+                        background-color: unset;
+                        border: none;
+                        color: red;
+                        transition: all 0.5s ease;
+
+                        &:hover {
+                            transform: scale(1.2, 1.2);
+                        }
+                    }
+                    button {
+                        border: none;
+                        background-color: goldenrod;
+                        padding: 0.5rem 1rem;
+                        border-radius: 20px;
+                        font-weight: 500;
+                        margin-top: 15px;
+                        color: #fff;
+
+                        &:hover {
+                            background-color: rgb(204, 179, 34);
+                        }
+                    }
+                }
+            }
         }
     }
 }

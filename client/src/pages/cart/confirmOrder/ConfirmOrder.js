@@ -35,7 +35,7 @@ const ConfirmOrder = ({ history }) => {
                 <CheckoutSteps shipping confirmOrder />
 
                 <div className="row d-flex justify-content-between">
-                    <div className="col-12 col-lg-8 mt-5 order-confirm">
+                    <div className="col-12 col-lg-8 mt-3 order-confirm">
                         <h4 className="mb-3">Shipping Info</h4>
                         <p>
                             <b>Name:</b> {user && user.name}
@@ -100,7 +100,7 @@ const ConfirmOrder = ({ history }) => {
                     </div>
 
                     <div className="col-12 col-lg-3 my-4">
-                        <div id="order_summary">
+                        <div className={styles.order_summary}>
                             <h4>Order Summary</h4>
                             <hr />
                             <p>
@@ -126,7 +126,6 @@ const ConfirmOrder = ({ history }) => {
                             <hr />
                             <button
                                 id="checkout_btn"
-                                className="btn btn-primary btn-block"
                                 onClick={processToPayment}
                             >
                                 Proceed to Payment

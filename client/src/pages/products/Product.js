@@ -22,14 +22,16 @@ const Product = ({ product }) => {
                 <div className={styles.product_image}>
                     <img src={product?.images[0].url} alt={product?.name} />
                 </div>
-                <Link to={`/product/${product?._id}`}>{product?.name}</Link>
-                <div className="d-flex align-items-center justify-content-between mt-3">
+                <Link to={`/product/${product?._id}`}>
+                    <p className={styles.product_name}>{product?.name}</p>
+                </Link>
+                <div className="d-flex align-items-center justify-content-between mt-5">
                     <div className={styles.product_rating}>
                         <AiFillStar size={20} color={"gold"} />
                         <span className="ms-2">{product?.numOfReviews}</span>
                     </div>
                     <div>
-                        <p className="fw-bold">$ {product?.price}</p>
+                        <span className="fw-bold">$ {product?.price}</span>
                     </div>
                 </div>
                 <div className={styles.link_container}>

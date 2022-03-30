@@ -1,11 +1,10 @@
 .shipping {
-    min-height: calc(100vh - 75px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
     font-family: var(--font-poppins);
+    margin-bottom: 20px;
 
     .shipping_container {
         background: rgba(230, 228, 228, 0.25);
@@ -60,6 +59,8 @@
                 letter-spacing: 1px;
                 font-weight: 500;
                 transition: all 0.5s ease-in-out;
+                background-color: #fa9c23;
+                color: #fff;
 
                 &:hover {
                     width: 90%;

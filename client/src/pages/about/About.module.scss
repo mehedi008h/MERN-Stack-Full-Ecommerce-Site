@@ -1,0 +1,83 @@
+.about {
+    font-family: var(--font-poppins);
+    .about_title {
+        background-color: aliceblue;
+        min-height: 120px;
+        display: flex;
+        align-items: center;
+    }
+    .about_info {
+        margin-top: 50px;
+
+        .image {
+            text-align: center;
+            @media screen and (max-width: 900px) {
+                text-align: left;
+            }
+            img {
+                height: 300px;
+                width: 400px;
+
+                @media screen and (max-width: 900px) {
+                    height: 200px;
+                    width: 250px;
+                    text-align: left;
+                }
+            }
+        }
+
+        .info {
+            width: 70%;
+
+            h4 {
+                font-weight: 500;
+                letter-spacing: 0.5px;
+            }
+            p {
+                font-weight: 500;
+                letter-spacing: 0.5px;
+                color: var(--color-grey);
+            }
+            button {
+                border: none;
+                background-color: goldenrod;
+                color: #fff;
+                padding: 0.5rem 1rem;
+                font-weight: 500;
+                border-radius: 20px;
+
+                &:hover {
+                    background-color: rgb(231, 174, 31);
+                }
+            }
+        }
+
+        .features {
+            margin-top: 50px;
+
+            .feature {
+                padding: 1rem;
+                text-align: center;
+                border-bottom: 2px solid #fff;
+                transition: all 0.5s ease;
+                border-radius: 10px;
+
+                &:hover {
+                    border-bottom: 2px solid #e7ae1f;
+                    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                }
+
+                h5 {
+                    margin-top: 15px;
+                    font-weight: 500;
+                }
+
+                P {
+                    margin-top: 5px;
+                    font-weight: 500;
+                    color: var(--color-gray);
+                }
+            }
+        }
+    }
+}
