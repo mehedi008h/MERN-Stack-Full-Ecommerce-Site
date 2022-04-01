@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updatePassword } from "../../../actions/userActions";
+import Footer from "../../../components/footer/Footer";
+import Navbar from "../../../components/header/Navbar";
 import ButtonLoader from "../../../components/loader/ButtonLoader";
 import ProfileLink from "../../../components/profileLinks/ProfileLink";
 import { UPDATE_PASSWORD_RESET } from "../../../constants/userConstants";
@@ -43,64 +45,70 @@ const ChangePassword = ({ history }) => {
         dispatch(updatePassword(formData));
     };
     return (
-        <div className={styles.update_password}>
-            <div className="container mt-5 mb-3">
-                <div className="row g-3">
-                    <div className="col-md-3">
-                        <ProfileLink />
-                    </div>
-                    <div className="col-md-9">
-                        <div className={styles.form_container}>
-                            <h4 className="text-center mt-3">
-                                Update Password
-                                <form
-                                    className={styles.form}
-                                    onSubmit={submitHandler}
-                                    encType="multipart/form-data"
-                                >
-                                    <div className={styles.from_group}>
-                                        <label htmlFor="old_password_field">
-                                            Old Password
-                                        </label>
-                                        <input
-                                            type="password"
-                                            id="old_password_field"
-                                            value={oldPassword}
-                                            onChange={(e) =>
-                                                setOldPassword(e.target.value)
-                                            }
-                                        />
-                                    </div>
-                                    <div className={styles.from_group}>
-                                        <label htmlFor="new_password_field">
-                                            New Password
-                                        </label>
-                                        <input
-                                            type="password"
-                                            id="new_password_field"
-                                            value={password}
-                                            onChange={(e) =>
-                                                setPassword(e.target.value)
-                                            }
-                                        />
-                                    </div>
+        <Fragment>
+            <Navbar />
+            <div className={styles.update_password}>
+                <div className="container mt-5 mb-3">
+                    <div className="row g-3">
+                        <div className="col-md-3">
+                            <ProfileLink />
+                        </div>
+                        <div className="col-md-9">
+                            <div className={styles.form_container}>
+                                <h4 className="text-center mt-3">
+                                    Update Password
+                                    <form
+                                        className={styles.form}
+                                        onSubmit={submitHandler}
+                                        encType="multipart/form-data"
+                                    >
+                                        <div className={styles.from_group}>
+                                            <label htmlFor="old_password_field">
+                                                Old Password
+                                            </label>
+                                            <input
+                                                type="password"
+                                                id="old_password_field"
+                                                value={oldPassword}
+                                                onChange={(e) =>
+                                                    setOldPassword(
+                                                        e.target.value
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                        <div className={styles.from_group}>
+                                            <label htmlFor="new_password_field">
+                                                New Password
+                                            </label>
+                                            <input
+                                                type="password"
+                                                id="new_password_field"
+                                                value={password}
+                                                onChange={(e) =>
+                                                    setPassword(e.target.value)
+                                                }
+                                            />
+                                        </div>
 
-                                    <div className={styles.from_group}>
-                                        <button>
-                                            {loading ? (
-                                                <ButtonLoader />
-                                            ) : (
-                                                "Update"
-                                            )}
-                                        </button>
-                                    </div>
-                                </form>
-                            </h4>
+                                        <div className={styles.from_group}>
+                                            <button>
+                                                {loading ? (
+                                                    <ButtonLoader />
+                                                ) : (
+                                                    "Update"
+                                                )}
+                                            </button>
+                                        </div>
+                                    </form>
+                                </h4>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </Fragment>
     );
 };
 

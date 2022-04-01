@@ -10,6 +10,8 @@ import styles from "./Products.module.scss";
 import Pagination from "react-js-pagination";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import Navbar from "../../components/header/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
@@ -67,6 +69,7 @@ const Products = ({ match }) => {
     }
     return (
         <Fragment>
+            <Navbar />
             {loading ? (
                 <>
                     <div className={styles.spinner}>
@@ -228,6 +231,7 @@ const Products = ({ match }) => {
                     </div>
                 </>
             )}
+            <Footer />
         </Fragment>
     );
 };

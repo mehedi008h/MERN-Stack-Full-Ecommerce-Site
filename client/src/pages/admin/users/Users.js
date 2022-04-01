@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useAlert } from "react-alert";
 import { Table } from "react-bootstrap";
-import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -10,9 +10,10 @@ import {
     deleteUser,
 } from "../../../actions/userActions";
 import Loader from "../../../components/loader/Loader";
-import Sidebar from "../../../components/sidebar/Sidebar";
+import Sidebar from "../../../components/admin/sidebar/Sidebar";
 import { DELETE_USER_RESET } from "../../../constants/userConstants";
 import styles from "./Users.module.scss";
+import Navbar from "../../../components/admin/navbar/Navbar";
 
 const Users = ({ history }) => {
     const alert = useAlert();
@@ -41,11 +42,12 @@ const Users = ({ history }) => {
     };
     return (
         <div className={styles.users}>
-            <div className="row">
+            <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />
                 </div>
-                <div className="col-md-10" style={{ marginTop: "75px" }}>
+                <div className="col-md-10">
+                    <Navbar />
                     <div className={`${styles.table} container mt-3`}>
                         {loading ? (
                             <>

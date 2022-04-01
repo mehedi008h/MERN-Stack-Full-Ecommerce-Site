@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
-import Sidebar from "../../../components/sidebar/Sidebar";
+import Sidebar from "../../../components/admin/sidebar/Sidebar";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,6 +8,7 @@ import styles from "./NewProduct.module.scss";
 import { clearErrors, newProduct } from "../../../actions/productAction";
 import { NEW_PRODUCT_RESET } from "../../../constants/productsConstants";
 import ButtonLoader from "../../../components/loader/ButtonLoader";
+import Navbar from "../../../components/admin/navbar/Navbar";
 
 const NewProduct = ({ history }) => {
     const [name, setName] = useState("");
@@ -99,11 +100,12 @@ const NewProduct = ({ history }) => {
     };
     return (
         <div className={styles.new_product}>
-            <div className="row">
+            <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />
                 </div>
                 <div className="col-md-10">
+                    <Navbar />
                     <div className={styles.product_input}>
                         <div className={styles.form}>
                             <h4>Add Product</h4>

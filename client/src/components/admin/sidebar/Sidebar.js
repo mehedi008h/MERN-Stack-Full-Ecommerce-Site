@@ -11,6 +11,11 @@ import { AiFillStar } from "react-icons/ai";
 const Sidebar = () => {
     return (
         <div className={styles.sidebar}>
+            <img
+                style={{ height: "40px" }}
+                src="https://res.cloudinary.com/mehedi08h/image/upload/v1648446111/shopx/logo2_diozsh.png"
+                alt=""
+            />
             <div>
                 <span>Main</span>
                 <div className="mt-1">

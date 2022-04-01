@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import Rating from "@mui/material/Rating";
@@ -18,6 +18,8 @@ import styles from "./SingleProduct.module.scss";
 import { addItemToCart } from "../../actions/cartActions";
 import { NEW_REVIEW_RESET } from "../../constants/productsConstants";
 import ListReview from "../reviews/ListReview";
+import Navbar from "../../components/header/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const SingleProduct = ({ match }) => {
     const [quantity, setQuantity] = useState(1);
@@ -96,223 +98,243 @@ const SingleProduct = ({ match }) => {
         setShow(false);
     };
     return (
-        <div className={styles.product_details}>
-            {loading ? (
-                <>
-                    <Loader />
-                </>
-            ) : (
-                <>
-                    <div className="container mb-5">
-                        <div className="row">
-                            <div className="col-md-6">
-                                {product.images && (
-                                    <>
-                                        <div className={styles.preview_image}>
-                                            <img
-                                                src={
-                                                    product?.images[preview].url
-                                                }
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div className={styles.image_thumbline}>
-                                            {product?.images.map(
-                                                (image, index) => (
-                                                    <div key={image._id}>
-                                                        <img
-                                                            src={image.url}
-                                                            onClick={() =>
-                                                                setPreview(
-                                                                    index
-                                                                )
-                                                            }
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                )
-                                            )}
-                                        </div>
-                                    </>
-                                )}
-                            </div>
-                            <div className="col-md-6">
-                                <div className={styles.Product_info}>
-                                    <h4>{product?.name}</h4>
-                                    <div className="d-flex align-items-center mt-3">
-                                        <h4>$ {product?.price}</h4>
-                                        <div className="ms-5">
-                                            <div className="rating-outer">
-                                                <div
-                                                    className="rating-inner"
-                                                    style={{
-                                                        width: `${
-                                                            (product.ratings /
-                                                                5) *
-                                                            100
-                                                        }%`,
-                                                    }}
-                                                ></div>
+        <Fragment>
+            <Navbar />
+            <div className={styles.product_details}>
+                {loading ? (
+                    <>
+                        <Loader />
+                    </>
+                ) : (
+                    <>
+                        <div className="container mb-5">
+                            <div className="row">
+                                <div className="col-md-6">
+                                    {product.images && (
+                                        <>
+                                            <div
+                                                className={styles.preview_image}
+                                            >
+                                                <img
+                                                    src={
+                                                        product?.images[preview]
+                                                            .url
+                                                    }
+                                                    alt=""
+                                                />
                                             </div>
-                                            <span id="no_of_reviews">
-                                                ({product.numOfReviews} Reviews)
+                                            <div
+                                                className={
+                                                    styles.image_thumbline
+                                                }
+                                            >
+                                                {product?.images.map(
+                                                    (image, index) => (
+                                                        <div key={image._id}>
+                                                            <img
+                                                                src={image.url}
+                                                                onClick={() =>
+                                                                    setPreview(
+                                                                        index
+                                                                    )
+                                                                }
+                                                                alt=""
+                                                            />
+                                                        </div>
+                                                    )
+                                                )}
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                                <div className="col-md-6">
+                                    <div className={styles.Product_info}>
+                                        <h4>{product?.name}</h4>
+                                        <div className="d-flex align-items-center mt-3">
+                                            <h4>$ {product?.price}</h4>
+                                            <div className="ms-5">
+                                                <div className="rating-outer">
+                                                    <div
+                                                        className="rating-inner"
+                                                        style={{
+                                                            width: `${
+                                                                (product.ratings /
+                                                                    5) *
+                                                                100
+                                                            }%`,
+                                                        }}
+                                                    ></div>
+                                                </div>
+                                                <span id="no_of_reviews">
+                                                    ({product.numOfReviews}{" "}
+                                                    Reviews)
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <p>{product?.description}</p>
+                                        {/* stock counter  */}
+                                        <div className={styles.stock_counter}>
+                                            <span
+                                                className="minus"
+                                                onClick={decreaseQty}
+                                            >
+                                                <AiOutlineMinus />
+                                            </span>
+
+                                            <input
+                                                className="count"
+                                                type="number"
+                                                value={quantity}
+                                                readOnly
+                                            />
+
+                                            <span
+                                                className="plus"
+                                                onClick={increaseQty}
+                                            >
+                                                <AiOutlinePlus />
                                             </span>
                                         </div>
-                                    </div>
-                                    <p>{product?.description}</p>
-                                    {/* stock counter  */}
-                                    <div className={styles.stock_counter}>
-                                        <span
-                                            className="minus"
-                                            onClick={decreaseQty}
-                                        >
-                                            <AiOutlineMinus />
-                                        </span>
-
-                                        <input
-                                            className="count"
-                                            type="number"
-                                            value={quantity}
-                                            readOnly
-                                        />
-
-                                        <span
-                                            className="plus"
-                                            onClick={increaseQty}
-                                        >
-                                            <AiOutlinePlus />
-                                        </span>
-                                    </div>
-                                    {/* stock status  */}
-                                    <p className="mt-3">
-                                        Status:
-                                        <span
-                                            id="stock_status"
-                                            className={
-                                                product.stock > 0
-                                                    ? "greenColor ms-2"
-                                                    : "redColor ms-2"
-                                            }
-                                        >
-                                            <b>
-                                                {product.stock > 0
-                                                    ? "In Stock"
-                                                    : "Out of Stock"}
-                                            </b>
-                                        </span>
-                                    </p>
-                                    {/* product seller  */}
-                                    <p id="product_seller mb-3">
-                                        Sold by:
-                                        <strong className="ms-2">
-                                            {product.seller}
-                                        </strong>
-                                    </p>
-                                    {/* butoon  */}
-                                    <div className={styles.button}>
-                                        <button
-                                            disabled={product.stock === 0}
-                                            onClick={addToCart}
-                                        >
-                                            Add To Cart
-                                        </button>
-                                        <button>Buy Now</button>
-                                    </div>
-                                    <div className={styles.review}>
-                                        {/* review */}
-                                        {user ? (
-                                            <>
-                                                <button onClick={handleShow}>
-                                                    Submit Review
-                                                </button>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <div
-                                                    className="alert alert-danger mt-5"
-                                                    type="alert"
-                                                >
-                                                    Login to post your review.
-                                                </div>
-                                            </>
-                                        )}
-
-                                        {show && (
-                                            <>
-                                                <div
-                                                    className={
-                                                        styles.review_card
-                                                    }
-                                                >
-                                                    <div className="d-flex align-items-center justify-content-between">
-                                                        <h5>
-                                                            Submit Your Review
-                                                        </h5>
-                                                        <AiOutlineCloseCircle
-                                                            onClick={() =>
-                                                                setShow(false)
-                                                            }
-                                                            className={
-                                                                styles.icon
-                                                            }
-                                                            size={25}
-                                                        />
+                                        {/* stock status  */}
+                                        <p className="mt-3">
+                                            Status:
+                                            <span
+                                                id="stock_status"
+                                                className={
+                                                    product.stock > 0
+                                                        ? "greenColor ms-2"
+                                                        : "redColor ms-2"
+                                                }
+                                            >
+                                                <b>
+                                                    {product.stock > 0
+                                                        ? "In Stock"
+                                                        : "Out of Stock"}
+                                                </b>
+                                            </span>
+                                        </p>
+                                        {/* product seller  */}
+                                        <p id="product_seller mb-3">
+                                            Sold by:
+                                            <strong className="ms-2">
+                                                {product.seller}
+                                            </strong>
+                                        </p>
+                                        {/* butoon  */}
+                                        <div className={styles.button}>
+                                            <button
+                                                disabled={product.stock === 0}
+                                                onClick={addToCart}
+                                            >
+                                                Add To Cart
+                                            </button>
+                                            <button>Buy Now</button>
+                                        </div>
+                                        <div className={styles.review}>
+                                            {/* review */}
+                                            {user ? (
+                                                <>
+                                                    <button
+                                                        onClick={handleShow}
+                                                    >
+                                                        Submit Review
+                                                    </button>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <div
+                                                        className="alert alert-danger mt-5"
+                                                        type="alert"
+                                                    >
+                                                        Login to post your
+                                                        review.
                                                     </div>
-                                                    <div>
-                                                        <Rating
-                                                            name="simple-controlled"
-                                                            value={rating}
-                                                            onChange={(
-                                                                event,
-                                                                newValue
-                                                            ) => {
-                                                                setRating(
+                                                </>
+                                            )}
+
+                                            {show && (
+                                                <>
+                                                    <div
+                                                        className={
+                                                            styles.review_card
+                                                        }
+                                                    >
+                                                        <div className="d-flex align-items-center justify-content-between">
+                                                            <h5>
+                                                                Submit Your
+                                                                Review
+                                                            </h5>
+                                                            <AiOutlineCloseCircle
+                                                                onClick={() =>
+                                                                    setShow(
+                                                                        false
+                                                                    )
+                                                                }
+                                                                className={
+                                                                    styles.icon
+                                                                }
+                                                                size={25}
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <Rating
+                                                                name="simple-controlled"
+                                                                value={rating}
+                                                                onChange={(
+                                                                    event,
                                                                     newValue
-                                                                );
-                                                            }}
-                                                        />
+                                                                ) => {
+                                                                    setRating(
+                                                                        newValue
+                                                                    );
+                                                                }}
+                                                            />
 
-                                                        <textarea
-                                                            name="review"
-                                                            id="review"
-                                                            className="form-control mt-3"
-                                                            value={comment}
-                                                            onChange={(e) =>
-                                                                setComment(
-                                                                    e.target
-                                                                        .value
-                                                                )
-                                                            }
-                                                        ></textarea>
+                                                            <textarea
+                                                                name="review"
+                                                                id="review"
+                                                                className="form-control mt-3"
+                                                                value={comment}
+                                                                onChange={(e) =>
+                                                                    setComment(
+                                                                        e.target
+                                                                            .value
+                                                                    )
+                                                                }
+                                                            ></textarea>
 
-                                                        <button
-                                                            onClick={
-                                                                reviewHandler
-                                                            }
-                                                        >
-                                                            Submit
-                                                        </button>
+                                                            <button
+                                                                onClick={
+                                                                    reviewHandler
+                                                                }
+                                                            >
+                                                                Submit
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </>
-                                        )}
-                                        {/*end review */}
+                                                </>
+                                            )}
+                                            {/*end review */}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-6">
-                                {product.reviews &&
-                                    product.reviews.length > 0 && (
-                                        <ListReview reviews={product.reviews} />
-                                    )}
+                            <div className="row">
+                                <div className="col-md-6">
+                                    {product.reviews &&
+                                        product.reviews.length > 0 && (
+                                            <ListReview
+                                                reviews={product.reviews}
+                                            />
+                                        )}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </>
-            )}
-        </div>
+                    </>
+                )}
+            </div>
+            <Footer />
+        </Fragment>
     );
 };
 

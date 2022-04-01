@@ -157,18 +157,6 @@ const Navbar = () => {
                                                     )}
                                                     <Link
                                                         to="/profile"
-                                                        onClick={() =>
-                                                            setDropdown(false)
-                                                        }
-                                                    >
-                                                        <AiOutlineUser
-                                                            size={20}
-                                                            className="me-3"
-                                                        />
-                                                        Profile
-                                                    </Link>
-                                                    <Link
-                                                        to="/profile"
                                                         id="logout"
                                                         onClick={logoutHandler}
                                                     >

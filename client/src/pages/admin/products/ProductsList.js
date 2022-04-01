@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Sidebar from "../../../components/sidebar/Sidebar";
+import Sidebar from "../../../components/admin/sidebar/Sidebar";
 import { Table } from "react-bootstrap";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
 import { DELETE_PRODUCT_RESET } from "../../../constants/productsConstants";
+import Navbar from "../../../components/admin/navbar/Navbar";
 const ProductsList = ({ history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
@@ -49,11 +50,12 @@ const ProductsList = ({ history }) => {
     };
     return (
         <div className={styles.products}>
-            <div className="row">
+            <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />
                 </div>
-                <div className="col-md-10" style={{ marginTop: "75px" }}>
+                <div className="col-md-10">
+                    <Navbar />
                     <div className={`${styles.table} container mt-3`}>
                         <div>
                             <Table responsive>

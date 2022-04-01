@@ -4,7 +4,7 @@ import {
     clearErrors,
     deleteOrder,
 } from "../../../actions/orderActions";
-import Sidebar from "../../../components/sidebar/Sidebar";
+import Sidebar from "../../../components/admin/sidebar/Sidebar";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Orders.module.scss";
@@ -13,6 +13,7 @@ import { Table } from "react-bootstrap";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { DELETE_ORDER_RESET } from "../../../constants/orderConstants";
+import Navbar from "../../../components/admin/navbar/Navbar";
 
 const Orders = ({ history }) => {
     const alert = useAlert();
@@ -42,11 +43,12 @@ const Orders = ({ history }) => {
 
     return (
         <div className={styles.orders}>
-            <div className="row">
+            <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />
                 </div>
-                <div className="col-md-10" style={{ marginTop: "75px" }}>
+                <div className="col-md-10">
+                    <Navbar />
                     <div className={`${styles.table} container mt-3`}>
                         {loading ? (
                             <>

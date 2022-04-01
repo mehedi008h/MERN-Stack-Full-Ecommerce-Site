@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,8 @@ import {
     loadUser,
     updateProfile,
 } from "../../../actions/userActions";
+import Footer from "../../../components/footer/Footer";
+import Navbar from "../../../components/header/Navbar";
 import ButtonLoader from "../../../components/loader/ButtonLoader";
 import ProfileLink from "../../../components/profileLinks/ProfileLink";
 import { UPDATE_PROFILE_RESET } from "../../../constants/userConstants";
@@ -77,112 +79,117 @@ const UpdateProfile = ({ history }) => {
         reader.readAsDataURL(e.target.files[0]);
     };
     return (
-        <div className={styles.update_profile}>
-            <div className="container mt-5 mb-3">
-                <div className="row g-3">
-                    <div className="col-md-3">
-                        <ProfileLink />
-                    </div>
-                    <div className="col-md-9">
-                        <div className={styles.form_container}>
-                            <h4 className="text-center mt-3">
-                                Update Profile
-                                <form
-                                    className={styles.form}
-                                    onSubmit={submitHandler}
-                                    encType="multipart/form-data"
-                                >
-                                    <div className={styles.from_group}>
-                                        <label htmlFor="email_field">
-                                            Name
-                                        </label>
-                                        <input
-                                            className="from_input"
-                                            name="name"
-                                            value={name}
-                                            onChange={(e) =>
-                                                setName(e.target.value)
-                                            }
-                                            type="text"
-                                        />
-                                    </div>
-                                    <div className={styles.from_group}>
-                                        <label htmlFor="email_field">
-                                            Address
-                                        </label>
-                                        <input
-                                            className="from_input"
-                                            name="address"
-                                            value={address}
-                                            onChange={(e) =>
-                                                setAddress(e.target.value)
-                                            }
-                                            type="text"
-                                        />
-                                    </div>
-                                    <div className={styles.from_group}>
-                                        <label htmlFor="email_field">
-                                            Phone
-                                        </label>
-                                        <input
-                                            className="from_input"
-                                            name="phone"
-                                            value={phone}
-                                            onChange={(e) =>
-                                                setPhone(e.target.value)
-                                            }
-                                            type="number"
-                                        />
-                                    </div>
+        <Fragment>
+            <Navbar />
+            <div className={styles.update_profile}>
+                <div className="container mt-5 mb-3">
+                    <div className="row g-3">
+                        <div className="col-md-3">
+                            <ProfileLink />
+                        </div>
+                        <div className="col-md-9">
+                            <div className={styles.form_container}>
+                                <h4 className="text-center mt-3">
+                                    Update Profile
+                                    <form
+                                        className={styles.form}
+                                        onSubmit={submitHandler}
+                                        encType="multipart/form-data"
+                                    >
+                                        <div className={styles.from_group}>
+                                            <label htmlFor="email_field">
+                                                Name
+                                            </label>
+                                            <input
+                                                className="from_input"
+                                                name="name"
+                                                value={name}
+                                                onChange={(e) =>
+                                                    setName(e.target.value)
+                                                }
+                                                type="text"
+                                            />
+                                        </div>
+                                        <div className={styles.from_group}>
+                                            <label htmlFor="email_field">
+                                                Address
+                                            </label>
+                                            <input
+                                                className="from_input"
+                                                name="address"
+                                                value={address}
+                                                onChange={(e) =>
+                                                    setAddress(e.target.value)
+                                                }
+                                                type="text"
+                                            />
+                                        </div>
+                                        <div className={styles.from_group}>
+                                            <label htmlFor="email_field">
+                                                Phone
+                                            </label>
+                                            <input
+                                                className="from_input"
+                                                name="phone"
+                                                value={phone}
+                                                onChange={(e) =>
+                                                    setPhone(e.target.value)
+                                                }
+                                                type="number"
+                                            />
+                                        </div>
 
-                                    <div className={styles.from_group}>
-                                        <label htmlFor="avatar_upload">
-                                            Avatar
-                                        </label>
-                                        <div className="d-flex align-items-center">
-                                            <div className="mt-3">
-                                                <figure className="avatar mr-3 item-rtl">
-                                                    <img
-                                                        style={{
-                                                            height: "50px",
-                                                            width: "50px",
-                                                            borderRadius: "50%",
-                                                        }}
-                                                        src={avatarPreview}
-                                                        alt="Avatar Preview"
+                                        <div className={styles.from_group}>
+                                            <label htmlFor="avatar_upload">
+                                                Avatar
+                                            </label>
+                                            <div className="d-flex align-items-center">
+                                                <div className="mt-3">
+                                                    <figure className="avatar mr-3 item-rtl">
+                                                        <img
+                                                            style={{
+                                                                height: "50px",
+                                                                width: "50px",
+                                                                borderRadius:
+                                                                    "50%",
+                                                            }}
+                                                            src={avatarPreview}
+                                                            alt="Avatar Preview"
+                                                        />
+                                                    </figure>
+                                                </div>
+                                                <div className="image_file ms-2">
+                                                    <input
+                                                        type="file"
+                                                        name="avatar"
+                                                        id="customFile"
+                                                        accept="iamges/*"
+                                                        onChange={onChange}
                                                     />
-                                                </figure>
-                                            </div>
-                                            <div className="image_file ms-2">
-                                                <input
-                                                    type="file"
-                                                    name="avatar"
-                                                    id="customFile"
-                                                    accept="iamges/*"
-                                                    onChange={onChange}
-                                                />
-                                                <AiOutlineCloudUpload
-                                                    size={20}
-                                                />
+                                                    <AiOutlineCloudUpload
+                                                        size={20}
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className={styles.from_group}>
-                                        <button>
-                                            {loading ? (
-                                                <ButtonLoader />
-                                            ) : (
-                                                "Update"
-                                            )}
-                                        </button>
-                                    </div>
-                                </form>
-                            </h4>
+                                        <div className={styles.from_group}>
+                                            <button>
+                                                {loading ? (
+                                                    <ButtonLoader />
+                                                ) : (
+                                                    "Update"
+                                                )}
+                                            </button>
+                                        </div>
+                                    </form>
+                                </h4>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </Fragment>
     );
 };
 

@@ -6,7 +6,8 @@ import {
     getUserDetails,
     updateUser,
 } from "../../../../actions/userActions";
-import Sidebar from "../../../../components/sidebar/Sidebar";
+import Navbar from "../../../../components/admin/navbar/Navbar";
+import Sidebar from "../../../../components/admin/sidebar/Sidebar";
 import { UPDATE_USER_RESET } from "../../../../constants/userConstants";
 
 import styles from "./UserDetails.module.scss";
@@ -62,12 +63,13 @@ const UserDetails = ({ history, match }) => {
     };
     return (
         <div className={styles.user_details}>
-            <div className="row">
+            <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />
                 </div>
-                <div className="col-md-10" style={{ marginTop: "75px" }}>
-                    <div className="container mt-3">
+                <div className="col-md-10">
+                    <Navbar />
+                    <div className="container mt-3 p-3">
                         <div className="row g-3">
                             <div className="col-md-6">
                                 <div className={styles.user_information}>

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { clearErrors, register } from "../../../actions/userActions";
+import Footer from "../../../components/footer/Footer";
+import Navbar from "../../../components/header/Navbar";
 import ButtonLoader from "../../../components/loader/ButtonLoader";
 import styles from "./Register.module.scss";
 
@@ -68,81 +70,89 @@ const Register = ({ history }) => {
     };
 
     return (
-        <div className={styles.login}>
-            <div className={styles.login_container}>
-                <h3 className="text-center text-white mb-3">Register</h3>
-                <form onSubmit={submitHandler} encType="multipart/form-data">
-                    <div className={styles.from_group}>
-                        <label htmlFor="anme_field">Name</label>
-                        <input
-                            type="text"
-                            placeholder="Enter your name ..."
-                            name="name"
-                            value={name}
-                            onChange={onChange}
-                        />
-                    </div>
-                    <div className={styles.from_group}>
-                        <label htmlFor="email_field">Email</label>
-                        <input
-                            type="email"
-                            placeholder="Enter your email ..."
-                            name="email"
-                            value={email}
-                            onChange={onChange}
-                        />
-                    </div>
-                    <div className={styles.from_group}>
-                        <label htmlFor="password_field">Password</label>
-                        <input
-                            type="password"
-                            placeholder="Enter your password ..."
-                            name="password"
-                            value={password}
-                            onChange={onChange}
-                        />
-                    </div>
-                    <div className="form-group mt-3">
-                        <label htmlFor="avatar_upload">Avatar</label>
-                        <div className="d-flex align-items-center">
-                            <div className="mt-3">
-                                <figure className="avatar mr-3 item-rtl">
-                                    <img
-                                        style={{
-                                            height: "50px",
-                                            width: "50px",
-                                            borderRadius: "50%",
-                                        }}
-                                        src={avatarPreview}
-                                        alt="Avatar Preview"
+        <Fragment>
+            <Navbar />
+            <div className={styles.login}>
+                <div className={styles.login_container}>
+                    <h3 className="text-center text-white mb-3">Register</h3>
+                    <form
+                        onSubmit={submitHandler}
+                        encType="multipart/form-data"
+                    >
+                        <div className={styles.from_group}>
+                            <label htmlFor="anme_field">Name</label>
+                            <input
+                                type="text"
+                                placeholder="Enter your name ..."
+                                name="name"
+                                value={name}
+                                onChange={onChange}
+                            />
+                        </div>
+                        <div className={styles.from_group}>
+                            <label htmlFor="email_field">Email</label>
+                            <input
+                                type="email"
+                                placeholder="Enter your email ..."
+                                name="email"
+                                value={email}
+                                onChange={onChange}
+                            />
+                        </div>
+                        <div className={styles.from_group}>
+                            <label htmlFor="password_field">Password</label>
+                            <input
+                                type="password"
+                                placeholder="Enter your password ..."
+                                name="password"
+                                value={password}
+                                onChange={onChange}
+                            />
+                        </div>
+                        <div className="form-group mt-3">
+                            <label htmlFor="avatar_upload">Avatar</label>
+                            <div className="d-flex align-items-center">
+                                <div className="mt-3">
+                                    <figure className="avatar mr-3 item-rtl">
+                                        <img
+                                            style={{
+                                                height: "50px",
+                                                width: "50px",
+                                                borderRadius: "50%",
+                                            }}
+                                            src={avatarPreview}
+                                            alt="Avatar Preview"
+                                        />
+                                    </figure>
+                                </div>
+                                <div className="image_file ms-2">
+                                    <input
+                                        type="file"
+                                        name="avatar"
+                                        id="customFile"
+                                        accept="iamges/*"
+                                        onChange={onChange}
                                     />
-                                </figure>
-                            </div>
-                            <div className="image_file ms-2">
-                                <input
-                                    type="file"
-                                    name="avatar"
-                                    id="customFile"
-                                    accept="iamges/*"
-                                    onChange={onChange}
-                                />
-                                <AiOutlineCloudUpload size={20} />
+                                    <AiOutlineCloudUpload size={20} />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div className={styles.from_group}>
+                            <button>
+                                {loading ? <ButtonLoader /> : "Register"}
+                            </button>
+                        </div>
+                    </form>
                     <div className={styles.from_group}>
-                        <button>
-                            {loading ? <ButtonLoader /> : "Register"}
-                        </button>
+                        <p className="text-center text-white">
+                            Already Have Account ?{" "}
+                            <Link to="/login">Login</Link>
+                        </p>
                     </div>
-                </form>
-                <div className={styles.from_group}>
-                    <p className="text-center text-white">
-                        Already Have Account ? <Link to="/login">Login</Link>
-                    </p>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </Fragment>
     );
 };
 

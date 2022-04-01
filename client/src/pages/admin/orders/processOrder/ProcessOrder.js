@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Sidebar from "../../../../components/sidebar/Sidebar";
+import Sidebar from "../../../../components/admin/sidebar/Sidebar";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Processorder.module.scss";
@@ -11,6 +11,7 @@ import {
 import { UPDATE_ORDER_RESET } from "../../../../constants/orderConstants";
 import Loader from "../../../../components/loader/Loader";
 import { Link } from "react-router-dom";
+import Navbar from "../../../../components/admin/navbar/Navbar";
 
 const ProcessOrder = ({ match }) => {
     const [status, setStatus] = useState("");
@@ -59,11 +60,12 @@ const ProcessOrder = ({ match }) => {
         paymentInfo && paymentInfo.status === "succeeded" ? true : false;
     return (
         <div className={styles.process_order}>
-            <div className="row">
+            <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />
                 </div>
-                <div className="col-md-10" style={{ marginTop: "75px" }}>
+                <div className="col-md-10">
+                    <Navbar />
                     <Fragment>
                         {loading ? (
                             <Loader />
@@ -191,7 +193,7 @@ const ProcessOrder = ({ match }) => {
                                     </div>
 
                                     <button
-                                        className="btn btn-primary btn-block"
+                                        className="btn btn-primary btn-block mt-3"
                                         onClick={() =>
                                             updateOrderHandler(order._id)
                                         }

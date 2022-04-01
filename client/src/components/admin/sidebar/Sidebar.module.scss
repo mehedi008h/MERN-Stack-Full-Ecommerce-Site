@@ -1,17 +1,14 @@
 .sidebar {
-    min-height: calc(100vh - 70px);
-    background-color: #ffffff;
+    min-height: 100vh;
+    background: rgba(230, 228, 228, 0.25);
     // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     border: 1px solid rgba(255, 255, 255, 0.18);
 
     font-family: var(--font-roboto);
     padding: 1rem;
-    border-right: 1px solid #00ccd6;
-    margin-top: 70px;
-    position: fixed;
-    width: 15%;
+    width: 100%;
     div {
-        margin-top: 5px;
+        margin-top: 30px;
         span {
             font-weight: 500;
             letter-spacing: 1px;

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
+import { Table } from "react-bootstrap";
+import { AiOutlineDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import {
     clearErrors,
     deleteReview,
     getProductReviews,
 } from "../../../actions/productAction";
-import Sidebar from "../../../components/sidebar/Sidebar";
+import Navbar from "../../../components/admin/navbar/Navbar";
+import Sidebar from "../../../components/admin/sidebar/Sidebar";
 import { DELETE_REVIEW_RESET } from "../../../constants/productsConstants";
 import styles from "./ProductReview.module.scss";
 
@@ -52,22 +55,22 @@ const ProductReview = () => {
     };
     return (
         <div className={styles.review}>
-            <div className="row">
+            <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />
                 </div>
-                <div className="col-md-10" style={{ marginTop: "75px" }}>
-                    <div className="row justify-content-center mt-5">
+                <div className="col-md-10">
+                    <Navbar />
+                    <div className="row justify-content-center p-3">
                         <div className="col-5">
                             <form onSubmit={submitHandler}>
-                                <div className="form-group">
+                                <div className={styles.form_group}>
                                     <label htmlFor="productId_field">
                                         Enter Product ID
                                     </label>
                                     <input
                                         type="text"
                                         id="productId_field"
-                                        className="form-control"
                                         value={productId}
                                         onChange={(e) =>
                                             setProductId(e.target.value)
@@ -75,15 +78,58 @@ const ProductReview = () => {
                                     />
                                 </div>
 
-                                <button
-                                    id="search_button"
-                                    type="submit"
-                                    className="btn btn-primary btn-block py-2"
-                                >
-                                    SEARCH
-                                </button>
+                                <div className={styles.form_group}>
+                                    <button id="search_button" type="submit">
+                                        Search
+                                    </button>
+                                </div>
                             </form>
                         </div>
+
+                        {reviews && reviews.length > 0 ? (
+                            <div div className="p-3 mt-3">
+                                {/* table  */}
+                                <Table responsive>
+                                    <thead>
+                                        <tr>
+                                            <th>Review ID</th>
+                                            <th>Rating</th>
+                                            <th>Comment</th>
+                                            <th>Name</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {reviews?.map((review) => (
+                                            <tr key={review?._id}>
+                                                <td>{review?._id}</td>
+
+                                                <td>{review.rating}</td>
+                                                <td>{review.comment}</td>
+                                                <td>{review.name}</td>
+                                                <td>
+                                                    <button
+                                                        className="btn btn-outline-danger btn-sm"
+                                                        onClick={() =>
+                                                            deleteReviewHandler(
+                                                                review._id
+                                                            )
+                                                        }
+                                                    >
+                                                        <AiOutlineDelete
+                                                            size={20}
+                                                        />
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </Table>
+                            </div>
+                        ) : (
+                            <p className="mt-5 text-center">No Reviews.</p>
+                        )}
                     </div>
                 </div>
             </div>

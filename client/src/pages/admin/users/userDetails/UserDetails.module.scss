@@ -4,12 +4,14 @@
     padding: 0;
     margin: 0;
     overflow: hidden;
-    background-color: aliceblue;
+    background-color: #fff;
     font-family: var(--font-poppins);
     position: relative;
 
     .user_information {
         background-color: #fff;
+        box-shadow: 0 4px 8px 5px rgba(232, 226, 226, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
         border-radius: 20px;
 
         div {

@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
-import Navbar from "./components/header/Navbar";
 import Login from "./pages/auth/login/Login";
 import Products from "./pages/products/Products";
 import Register from "./pages/auth/register/Register";
@@ -39,7 +38,6 @@ import ForgotPassword from "./pages/auth/forgotPassword/ForgotPassword";
 import ResetPassword from "./pages/auth/resetPassword/ResetPassword";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
-import Footer from "./components/footer/Footer";
 
 function App() {
     const [stripeApiKey, setStripeApiKey] = useState("");
@@ -57,7 +55,6 @@ function App() {
     return (
         <div className="app">
             <Router>
-                <Navbar />
                 <Route path="/" component={Home} exact />
                 <Route path="/login" component={Login} exact />
                 <Route path="/register" component={Register} exact />
@@ -163,7 +160,6 @@ function App() {
                     component={ProductReview}
                     exact
                 />
-                <Footer />
             </Router>
         </div>
     );

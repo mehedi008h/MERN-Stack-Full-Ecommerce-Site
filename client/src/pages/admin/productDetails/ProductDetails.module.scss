@@ -5,15 +5,36 @@
     margin: 0;
     overflow: hidden;
 
-    .image_preivew {
-        width: 450px;
-        height: 300px;
-        border-radius: 10px;
+    .preview_image {
+        height: 350px;
+        width: 500px;
+        border-radius: 20px;
+        img {
+            height: 300px;
+            width: 450px;
+            border-radius: 20px;
+        }
     }
-    .image_container {
-        width: 400px;
-        height: 90px;
-        margin-top: 10px;
-        border-radius: 10px;
+
+    .image_thumbline {
+        display: flex;
+        align-items: center;
+        width: 450px;
+
+        div {
+            img {
+                height: 100px;
+                width: 135px;
+                margin: 5px;
+            }
+        }
+    }
+
+    .Product_info {
+        p {
+            color: var(--color-gray);
+            font-size: 16px;
+            margin-top: 5px;
+        }
     }
 }

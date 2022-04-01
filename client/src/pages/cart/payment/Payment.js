@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import CheckoutSteps from "../checkoutSteps/CheckoutSteps";
 import styles from "./Payment.module.scss";
 
@@ -15,6 +15,8 @@ import {
 
 import axios from "axios";
 import { clearErrors, createOrder } from "../../../actions/orderActions";
+import Navbar from "../../../components/header/Navbar";
+import Footer from "../../../components/footer/Footer";
 
 const options = {
     style: {
@@ -120,48 +122,57 @@ const Payment = ({ history }) => {
         }
     };
     return (
-        <div className={styles.payment}>
-            <div className="container">
-                <CheckoutSteps shipping confirmOrder payment />
+        <Fragment>
+            <Navbar />
+            <div className={styles.payment}>
+                <div className="container">
+                    <CheckoutSteps shipping confirmOrder payment />
 
-                <div className={styles.payment_container}>
-                    <form onSubmit={submitHandler}>
-                        <h4 className="mb-4">Card Info</h4>
-                        <div className={styles.from_group}>
-                            <label htmlFor="card_num_field">Card Number</label>
-                            <CardNumberElement
-                                type="text"
-                                id="card_num_field"
-                                options={options}
-                            />
-                        </div>
+                    <div className={styles.payment_container}>
+                        <form onSubmit={submitHandler}>
+                            <h4 className="mb-4">Card Info</h4>
+                            <div className={styles.from_group}>
+                                <label htmlFor="card_num_field">
+                                    Card Number
+                                </label>
+                                <CardNumberElement
+                                    type="text"
+                                    id="card_num_field"
+                                    options={options}
+                                />
+                            </div>
 
-                        <div className={styles.from_group}>
-                            <label htmlFor="card_exp_field">Card Expiry</label>
-                            <CardExpiryElement
-                                type="text"
-                                id="card_exp_field"
-                                options={options}
-                            />
-                        </div>
+                            <div className={styles.from_group}>
+                                <label htmlFor="card_exp_field">
+                                    Card Expiry
+                                </label>
+                                <CardExpiryElement
+                                    type="text"
+                                    id="card_exp_field"
+                                    options={options}
+                                />
+                            </div>
 
-                        <div className={styles.from_group}>
-                            <label htmlFor="card_cvc_field">Card CVC</label>
-                            <CardCvcElement
-                                type="text"
-                                id="card_cvc_field"
-                                options={options}
-                            />
-                        </div>
-                        <div className={styles.from_group}>
-                            <button id="pay_btn" type="submit">
-                                Pay {` - ${orderInfo && orderInfo.totalPrice}`}
-                            </button>
-                        </div>
-                    </form>
+                            <div className={styles.from_group}>
+                                <label htmlFor="card_cvc_field">Card CVC</label>
+                                <CardCvcElement
+                                    type="text"
+                                    id="card_cvc_field"
+                                    options={options}
+                                />
+                            </div>
+                            <div className={styles.from_group}>
+                                <button id="pay_btn" type="submit">
+                                    Pay{" "}
+                                    {` - ${orderInfo && orderInfo.totalPrice}`}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </Fragment>
     );
 };
 
