@@ -1,11 +1,13 @@
 .orders {
     display: flex;
-    background-color: #e5e5e5;
+    background-color: #fff;
     min-height: 100vh;
     font-family: var(--font-poppins);
 
     .orders_container {
         background-color: #ffffff;
+        box-shadow: 0 4px 8px 5px rgba(232, 226, 226, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
         padding: 1rem;
         border-radius: 10px;
 

@@ -44,15 +44,15 @@ const ChangePassword = ({ history }) => {
     };
     return (
         <div className={styles.update_password}>
-            <div className="container" style={{ marginTop: "85px" }}>
+            <div className="container mt-5 mb-3">
                 <div className="row g-3">
                     <div className="col-md-3">
                         <ProfileLink />
                     </div>
                     <div className="col-md-9">
                         <div className={styles.form_container}>
-                            <h4 className="text-center">
-                                Update Profile
+                            <h4 className="text-center mt-3">
+                                Update Password
                                 <form
                                     className={styles.form}
                                     onSubmit={submitHandler}

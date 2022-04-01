@@ -24,7 +24,7 @@ const MyOrders = () => {
     }, [dispatch, alert, error]);
     return (
         <div className={styles.orders}>
-            <div className="container" style={{ marginTop: "85px" }}>
+            <div className="container mt-5 mb-3">
                 <div className="row g-3">
                     <div className="col-md-3">
                         <ProfileLink />

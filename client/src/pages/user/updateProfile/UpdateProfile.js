@@ -78,14 +78,14 @@ const UpdateProfile = ({ history }) => {
     };
     return (
         <div className={styles.update_profile}>
-            <div className="container" style={{ marginTop: "85px" }}>
+            <div className="container mt-5 mb-3">
                 <div className="row g-3">
                     <div className="col-md-3">
                         <ProfileLink />
                     </div>
                     <div className="col-md-9">
                         <div className={styles.form_container}>
-                            <h4 className="text-center">
+                            <h4 className="text-center mt-3">
                                 Update Profile
                                 <form
                                     className={styles.form}
