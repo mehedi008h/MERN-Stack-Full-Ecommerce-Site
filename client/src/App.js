@@ -39,6 +39,7 @@ import ForgotPassword from "./pages/auth/forgotPassword/ForgotPassword";
 import ResetPassword from "./pages/auth/resetPassword/ResetPassword";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
+import Footer from "./components/footer/Footer";
 
 function App() {
     const [stripeApiKey, setStripeApiKey] = useState("");
@@ -162,6 +163,7 @@ function App() {
                     component={ProductReview}
                     exact
                 />
+                <Footer />
             </Router>
         </div>
     );
