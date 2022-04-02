@@ -7,23 +7,81 @@
         height: 350px;
         width: 500px;
         border-radius: 20px;
+
+        @media screen and (max-width: 900px) {
+            height: 200px;
+            width: 350px;
+        }
         img {
             height: 300px;
             width: 450px;
             border-radius: 20px;
+
+            @media screen and (max-width: 900px) {
+                height: 200px;
+                width: 350px;
+            }
         }
     }
 
-    .image_thumbline {
+    .products_container {
         display: flex;
-        align-items: center;
+        flex-direction: row;
         width: 450px;
+        position: relative;
 
-        div {
-            img {
-                height: 100px;
+        @media screen and (max-width: 900px) {
+            width: 350px;
+        }
+
+        .products_container_branch {
+            margin-top: 5px;
+            display: flex;
+            flex-direction: row;
+            width: max-content;
+            overflow-x: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .item {
+                display: flex;
+                margin: 1rem;
+                flex-direction: column;
+                align-items: center;
                 width: 135px;
-                margin: 5px;
+                border-radius: 10px;
+                img {
+                    height: 100px;
+                    width: 135px;
+                    border-radius: 10px;
+                }
+            }
+        }
+
+        .app__gallery_images_arrows {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 1rem;
+            position: absolute;
+            bottom: 5%;
+        }
+
+        .gallery__arrow_icon {
+            color: var(--color-black);
+            font-size: 2rem;
+            cursor: pointer;
+            background: var(--color-golden);
+            border-radius: 5px;
+
+            &:hover {
+                color: var(--color-white);
             }
         }
     }

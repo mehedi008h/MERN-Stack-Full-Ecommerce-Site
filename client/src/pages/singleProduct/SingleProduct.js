@@ -20,6 +20,7 @@ import { NEW_REVIEW_RESET } from "../../constants/productsConstants";
 import ListReview from "../reviews/ListReview";
 import Navbar from "../../components/header/Navbar";
 import Footer from "../../components/footer/Footer";
+import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 
 const SingleProduct = ({ match }) => {
     const [quantity, setQuantity] = useState(1);
@@ -29,10 +30,23 @@ const SingleProduct = ({ match }) => {
 
     const [show, setShow] = useState(false);
 
+    const scrollRef = React.useRef(null);
+
     const dispatch = useDispatch();
     const alert = useAlert();
 
     let { id } = useParams();
+
+    // image thumbline
+    const scroll = (direction) => {
+        const { current } = scrollRef;
+
+        if (direction === "left") {
+            current.scrollLeft -= 300;
+        } else {
+            current.scrollLeft += 300;
+        }
+    };
 
     const { loading, error, product } = useSelector(
         (state) => state.productDetails
@@ -77,7 +91,7 @@ const SingleProduct = ({ match }) => {
             alert.success("Reivew posted successfully");
             dispatch({ type: NEW_REVIEW_RESET });
         }
-    }, [dispatch, alert, error, reviewError, match.params.id, success]);
+    }, [dispatch, alert, id, error, reviewError, success]);
 
     const addToCart = () => {
         dispatch(addItemToCart(id, quantity));
@@ -108,7 +122,7 @@ const SingleProduct = ({ match }) => {
                 ) : (
                     <>
                         <div className="container mb-5">
-                            <div className="row">
+                            <div className="row g-3">
                                 <div className="col-md-6">
                                     {product.images && (
                                         <>
@@ -123,26 +137,67 @@ const SingleProduct = ({ match }) => {
                                                     alt=""
                                                 />
                                             </div>
+                                            {/* product section  */}
+
                                             <div
                                                 className={
-                                                    styles.image_thumbline
+                                                    styles.products_container
                                                 }
                                             >
-                                                {product?.images.map(
-                                                    (image, index) => (
-                                                        <div key={image._id}>
-                                                            <img
-                                                                src={image.url}
-                                                                onClick={() =>
-                                                                    setPreview(
-                                                                        index
-                                                                    )
-                                                                }
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                    )
-                                                )}
+                                                <div
+                                                    className={
+                                                        styles.products_container_branch
+                                                    }
+                                                    ref={scrollRef}
+                                                >
+                                                    {product?.images.map(
+                                                        (image, index) => (
+                                                            <div
+                                                                key={image._id}
+                                                            >
+                                                                <div
+                                                                    className={
+                                                                        styles.item
+                                                                    }
+                                                                >
+                                                                    <img
+                                                                        src={
+                                                                            image.url
+                                                                        }
+                                                                        onClick={() =>
+                                                                            setPreview(
+                                                                                index
+                                                                            )
+                                                                        }
+                                                                        alt=""
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    )}
+                                                </div>
+                                                <div
+                                                    className={
+                                                        styles.app__gallery_images_arrows
+                                                    }
+                                                >
+                                                    <BsArrowLeftShort
+                                                        className={
+                                                            styles.gallery__arrow_icon
+                                                        }
+                                                        onClick={() =>
+                                                            scroll("left")
+                                                        }
+                                                    />
+                                                    <BsArrowRightShort
+                                                        className={
+                                                            styles.gallery__arrow_icon
+                                                        }
+                                                        onClick={() =>
+                                                            scroll("right")
+                                                        }
+                                                    />
+                                                </div>
                                             </div>
                                         </>
                                     )}
@@ -320,7 +375,7 @@ const SingleProduct = ({ match }) => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-md-6">
+                                <div className="col-md-6 mt-5">
                                     {product.reviews &&
                                         product.reviews.length > 0 && (
                                             <ListReview

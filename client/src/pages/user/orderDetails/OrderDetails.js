@@ -65,7 +65,7 @@ const OrderDetails = ({ match }) => {
         <Fragment>
             <Navbar />
             <div className={styles.order_details}>
-                <div className="container" style={{ marginTop: "85px" }}>
+                <div className="container mt-5 mb-3">
                     <div className="row g-3">
                         <div className="col-md-3">
                             <ProfileLink />
