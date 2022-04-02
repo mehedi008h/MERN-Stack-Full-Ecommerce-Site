@@ -23,38 +23,30 @@ const UpdateProduct = ({ history }) => {
     const [stock, setStock] = useState(0);
     const [seller, setSeller] = useState("");
     const [type, setType] = useState("");
-    const [size, setSize] = useState("");
-    const [color, setColor] = useState("");
     const [images, setImages] = useState([]);
 
     const [oldImages, setOldImages] = useState([]);
     const [imagesPreview, setImagesPreview] = useState([]);
 
     const categories = [
-        "Electronics",
-        "Cameras",
-        "Laptops",
+        "Eid Collection",
+        "New Collection",
+        "Featured",
+        "Footwear",
         "Accessories",
-        "Headphones",
-        "Food",
-        "Books",
-        "Clothes/Shoes",
+        "Clothing",
         "Beauty/Health",
         "Sports",
         "Outdoor",
-        "Home",
+        "Other",
     ];
-    const types = ["New", "Latests"];
-    const sizes = ["30", "32", "34", "36"];
-    const colors = ["White", "Black", "Green", "Blue", "Yellow", "Pink"];
+    const types = ["Men", "Women", "Kids"];
 
     const alert = useAlert();
     const dispatch = useDispatch();
     let { id } = useParams();
 
-    const { detailsLoading, error, product } = useSelector(
-        (state) => state.productDetails
-    );
+    const { error, product } = useSelector((state) => state.productDetails);
     const {
         loading,
         error: updateError,
@@ -72,8 +64,6 @@ const UpdateProduct = ({ history }) => {
             setSeller(product.seller);
             setStock(product.stock);
             setType(product.type);
-            setSize(product.size);
-            setColor(product.color);
             setOldImages(product.images);
         }
 
@@ -105,8 +95,6 @@ const UpdateProduct = ({ history }) => {
         formData.set("stock", stock);
         formData.set("seller", seller);
         formData.set("type", type);
-        formData.set("size", size);
-        formData.set("color", color);
 
         images.forEach((image) => {
             formData.append("images", image);
@@ -253,77 +241,23 @@ const UpdateProduct = ({ history }) => {
                                     </div>
                                 </div>
 
-                                {/* types, sizes & color section  */}
-                                <div className="row">
-                                    <div className="col-md-4">
-                                        <div className={styles.from_group}>
-                                            <label htmlFor="type_field">
-                                                Types
-                                            </label>
-                                            <select
-                                                id="type_field"
-                                                value={type}
-                                                onChange={(e) =>
-                                                    setType(e.target.value)
-                                                }
-                                            >
-                                                {types.map((type) => (
-                                                    <option
-                                                        key={type}
-                                                        value={type}
-                                                    >
-                                                        {type}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4">
-                                        <div className={styles.from_group}>
-                                            <label htmlFor="size_field">
-                                                Size
-                                            </label>
-                                            <select
-                                                id="size_field"
-                                                value={size}
-                                                onChange={(e) =>
-                                                    setSize(e.target.value)
-                                                }
-                                            >
-                                                {sizes.map((size) => (
-                                                    <option
-                                                        key={size}
-                                                        value={size}
-                                                    >
-                                                        {size}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4">
-                                        <div className={styles.from_group}>
-                                            <label htmlFor="color_field">
-                                                Color
-                                            </label>
-                                            <select
-                                                id="color_field"
-                                                value={color}
-                                                onChange={(e) =>
-                                                    setColor(e.target.value)
-                                                }
-                                            >
-                                                {colors.map((color) => (
-                                                    <option
-                                                        key={color}
-                                                        value={color}
-                                                    >
-                                                        {color}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
+                                {/* types  */}
+
+                                <div className={styles.from_group}>
+                                    <label htmlFor="type_field">Types</label>
+                                    <select
+                                        id="type_field"
+                                        value={type}
+                                        onChange={(e) =>
+                                            setType(e.target.value)
+                                        }
+                                    >
+                                        {types.map((type) => (
+                                            <option key={type} value={type}>
+                                                {type}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
 
                                 {/* image section  */}

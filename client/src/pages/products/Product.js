@@ -1,12 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useAlert } from "react-alert";
 import { AiFillStar, AiOutlineEye } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addItemToCart } from "../../actions/cartActions";
-import Footer from "../../components/footer/Footer";
-import Navbar from "../../components/header/Navbar";
 
 import styles from "./Products.module.scss";
 

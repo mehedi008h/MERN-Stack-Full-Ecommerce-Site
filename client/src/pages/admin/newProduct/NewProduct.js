@@ -22,20 +22,18 @@ const NewProduct = ({ history }) => {
     const [imagesPreview, setImagesPreview] = useState([]);
 
     const categories = [
-        "Electronics",
-        "Cameras",
-        "Laptops",
+        "Eid Collection",
+        "New Collection",
+        "Featured",
+        "Footwear",
         "Accessories",
-        "Headphones",
-        "Food",
-        "Books",
-        "Clothes/Shoes",
+        "Clothing",
         "Beauty/Health",
         "Sports",
         "Outdoor",
-        "Home",
+        "Other",
     ];
-    const types = ["New", "Latests"];
+    const types = ["Men", "Women", "Kids"];
 
     const alert = useAlert();
     const dispatch = useDispatch();

@@ -23,18 +23,16 @@ const Products = ({ match }) => {
     const [rating, setRating] = useState(0);
 
     const categories = [
-        "Electronics",
-        "Cameras",
-        "Laptops",
+        "Eid Collection",
+        "New Collection",
+        "Featured",
+        "Footwear",
         "Accessories",
-        "Headphones",
-        "Food",
-        "Books",
-        "Clothes/Shoes",
+        "Clothing",
         "Beauty/Health",
         "Sports",
         "Outdoor",
-        "Home",
+        "Other",
     ];
 
     const alert = useAlert();
