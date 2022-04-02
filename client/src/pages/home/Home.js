@@ -5,6 +5,7 @@ import { getAdminProducts } from "../../actions/productAction";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/header/Navbar";
 import Loader from "../../components/loader/Loader";
+import MetaData from "../../components/MetaData";
 import Banner from "./banner/Banner";
 import Category from "./category/Category";
 import Fashion from "./fashion/Fashion";
@@ -29,6 +30,7 @@ const Home = () => {
     }, [dispatch, alert, error]);
     return (
         <Fragment>
+            <MetaData title={"Home"} />
             <Navbar />
             <Banner />
             <Category />

@@ -9,6 +9,7 @@ import { clearErrors, myOrders } from "../../../actions/orderActions";
 import { Link } from "react-router-dom";
 import Navbar from "../../../components/header/Navbar";
 import Footer from "../../../components/footer/Footer";
+import MetaData from "../../../components/MetaData";
 
 const MyOrders = () => {
     const alert = useAlert();
@@ -26,6 +27,7 @@ const MyOrders = () => {
     }, [dispatch, alert, error]);
     return (
         <Fragment>
+            <MetaData title={"My Order"} />
             <Navbar />
             <div className={styles.orders}>
                 <div className="container mt-5 mb-3">

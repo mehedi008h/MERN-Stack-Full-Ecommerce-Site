@@ -6,6 +6,7 @@ import styles from "./Shipping.module.scss";
 import { saveShippingInfo } from "../../../actions/cartActions";
 import Navbar from "../../../components/header/Navbar";
 import Footer from "../../../components/footer/Footer";
+import MetaData from "../../../components/MetaData";
 
 const Shipping = ({ history }) => {
     const countriesList = Object.values(countries);
@@ -30,6 +31,7 @@ const Shipping = ({ history }) => {
     };
     return (
         <Fragment>
+            <MetaData title={"Shipping"} />
             <Navbar />
             <div className={styles.shipping}>
                 <CheckoutSteps shipping />

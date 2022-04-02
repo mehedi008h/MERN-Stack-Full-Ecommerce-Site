@@ -10,6 +10,7 @@ import Loader from "../../../components/loader/Loader";
 import { getAdminProducts } from "../../../actions/productAction";
 import { allUsers } from "../../../actions/userActions";
 import { allOrders } from "../../../actions/orderActions";
+import MetaData from "../../../components/MetaData";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -73,6 +74,7 @@ const Dashboard = () => {
 
     return (
         <div className={styles.dashboard}>
+            <MetaData title={"Dashboard"} />
             <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />

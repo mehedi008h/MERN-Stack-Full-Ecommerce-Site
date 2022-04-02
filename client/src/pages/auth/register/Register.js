@@ -7,6 +7,7 @@ import { clearErrors, register } from "../../../actions/userActions";
 import Footer from "../../../components/footer/Footer";
 import Navbar from "../../../components/header/Navbar";
 import ButtonLoader from "../../../components/loader/ButtonLoader";
+import MetaData from "../../../components/MetaData";
 import styles from "./Register.module.scss";
 
 const Register = ({ history }) => {
@@ -71,6 +72,7 @@ const Register = ({ history }) => {
 
     return (
         <Fragment>
+            <MetaData title={"Register"} />
             <Navbar />
             <div className={styles.login}>
                 <div className={styles.login_container}>

@@ -9,6 +9,7 @@ import { clearErrors, newProduct } from "../../../actions/productAction";
 import { NEW_PRODUCT_RESET } from "../../../constants/productsConstants";
 import ButtonLoader from "../../../components/loader/ButtonLoader";
 import Navbar from "../../../components/admin/navbar/Navbar";
+import MetaData from "../../../components/MetaData";
 
 const NewProduct = ({ history }) => {
     const [name, setName] = useState("");
@@ -98,6 +99,7 @@ const NewProduct = ({ history }) => {
     };
     return (
         <div className={styles.new_product}>
+            <MetaData title={"Add Product"} />
             <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />

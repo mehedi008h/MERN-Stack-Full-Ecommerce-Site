@@ -14,6 +14,7 @@ import { UPDATE_PRODUCT_RESET } from "../../../constants/productsConstants";
 
 import styles from "./UpdateProduct.module.scss";
 import Navbar from "../../../components/admin/navbar/Navbar";
+import MetaData from "../../../components/MetaData";
 
 const UpdateProduct = ({ history }) => {
     const [name, setName] = useState("");
@@ -128,6 +129,7 @@ const UpdateProduct = ({ history }) => {
     };
     return (
         <div className={styles.new_product}>
+            <MetaData title={"Update Products"} />
             <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />

@@ -14,6 +14,7 @@ import Sidebar from "../../../components/admin/sidebar/Sidebar";
 import { DELETE_USER_RESET } from "../../../constants/userConstants";
 import styles from "./Users.module.scss";
 import Navbar from "../../../components/admin/navbar/Navbar";
+import MetaData from "../../../components/MetaData";
 
 const Users = ({ history }) => {
     const alert = useAlert();
@@ -42,6 +43,7 @@ const Users = ({ history }) => {
     };
     return (
         <div className={styles.users}>
+            <MetaData title={"All Users"} />
             <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />

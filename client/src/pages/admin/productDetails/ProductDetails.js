@@ -8,6 +8,7 @@ import styles from "./ProductDetails.module.scss";
 import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import Navbar from "../../../components/admin/navbar/Navbar";
+import MetaData from "../../../components/MetaData";
 
 const ProductDetails = () => {
     const [preview, setPreview] = useState(0);
@@ -31,6 +32,7 @@ const ProductDetails = () => {
     }, [dispatch, alert, error, id]);
     return (
         <div className={styles.product_details}>
+            <MetaData title={"Product Details"} />
             <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />

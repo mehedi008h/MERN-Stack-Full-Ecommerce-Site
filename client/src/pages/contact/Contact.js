@@ -5,6 +5,7 @@ import styles from "./Contact.module.scss";
 import { FcBusinessContact } from "react-icons/fc";
 import Navbar from "../../components/header/Navbar";
 import Footer from "../../components/footer/Footer";
+import MetaData from "../../components/MetaData";
 
 const Contact = () => {
     const contacts = [
@@ -31,6 +32,7 @@ const Contact = () => {
     ];
     return (
         <Fragment>
+            <MetaData title={"Contact"} />
             <Navbar />
             <div className={styles.contact}>
                 <div className={styles.contact_title}>

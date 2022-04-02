@@ -12,6 +12,7 @@ import { UPDATE_ORDER_RESET } from "../../../../constants/orderConstants";
 import Loader from "../../../../components/loader/Loader";
 import { Link } from "react-router-dom";
 import Navbar from "../../../../components/admin/navbar/Navbar";
+import MetaData from "../../../../components/MetaData";
 
 const ProcessOrder = ({ match }) => {
     const [status, setStatus] = useState("");
@@ -60,6 +61,7 @@ const ProcessOrder = ({ match }) => {
         paymentInfo && paymentInfo.status === "succeeded" ? true : false;
     return (
         <div className={styles.process_order}>
+            <MetaData title={"Process Order"} />
             <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />

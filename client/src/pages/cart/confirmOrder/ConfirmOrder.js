@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Footer from "../../../components/footer/Footer";
 import Navbar from "../../../components/header/Navbar";
+import MetaData from "../../../components/MetaData";
 import CheckoutSteps from "../checkoutSteps/CheckoutSteps";
 
 import styles from "./ConfirmOrder.module.scss";
@@ -33,6 +34,7 @@ const ConfirmOrder = ({ history }) => {
     };
     return (
         <Fragment>
+            <MetaData title={"Confirm Order"} />
             <Navbar />
             <div className={styles.confirm}>
                 <div className="container">

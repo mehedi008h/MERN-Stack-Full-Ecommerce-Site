@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, resetPassword } from "../../../actions/userActions";
 import Footer from "../../../components/footer/Footer";
 import Navbar from "../../../components/header/Navbar";
+import MetaData from "../../../components/MetaData";
 
 import styles from "./ResetPassword.module.scss";
 
@@ -39,6 +40,7 @@ const ResetPassword = ({ history, match }) => {
     };
     return (
         <Fragment>
+            <MetaData title={"Reset Password"} />
             <Navbar />
             <div className={styles.reset_password}>
                 <div className="row wrapper">

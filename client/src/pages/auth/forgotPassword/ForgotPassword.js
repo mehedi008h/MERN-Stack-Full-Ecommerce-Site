@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../../actions/userActions";
 import Footer from "../../../components/footer/Footer";
 import Navbar from "../../../components/header/Navbar";
+import MetaData from "../../../components/MetaData";
 import styles from "./ForgotPassword.module.scss";
 
 const ForgotPassword = () => {
@@ -37,6 +38,7 @@ const ForgotPassword = () => {
     };
     return (
         <Fragment>
+            <MetaData title={"Forgot Password"} />
             <Navbar />
             <div className={styles.forgot_password}>
                 <div className="row wrapper">

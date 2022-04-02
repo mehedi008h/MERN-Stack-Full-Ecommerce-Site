@@ -7,6 +7,7 @@ import {
 } from "react-icons/fc";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/header/Navbar";
+import MetaData from "../../components/MetaData";
 import styles from "./About.module.scss";
 
 const About = () => {
@@ -38,6 +39,7 @@ const About = () => {
     ];
     return (
         <Fragment>
+            <MetaData title={"About"} />
             <Navbar />
             <div className={styles.about}>
                 <div className={styles.about_title}>

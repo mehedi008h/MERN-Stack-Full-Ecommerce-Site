@@ -7,6 +7,7 @@ import { addItemToCart, removeItemFromCart } from "../../actions/cartActions";
 import styles from "./Cart.module.scss";
 import Navbar from "../../components/header/Navbar";
 import Footer from "../../components/footer/Footer";
+import MetaData from "../../components/MetaData";
 
 const Cart = ({ history }) => {
     const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const Cart = ({ history }) => {
     };
     return (
         <Fragment>
+            <MetaData title={"Cart"} />
             <Navbar />
             <div className={styles.cart}>
                 <div className="container mt-3">

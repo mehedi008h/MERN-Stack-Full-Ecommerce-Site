@@ -1,11 +1,13 @@
 import React, { Fragment } from "react";
 import Footer from "../../../components/footer/Footer";
 import Navbar from "../../../components/header/Navbar";
+import MetaData from "../../../components/MetaData";
 import styles from "./Success.module.scss";
 
 const Success = () => {
     return (
         <Fragment>
+            <MetaData title={"Success"} />
             <Navbar />
             <div className={styles.success}>
                 <div class="svg-container">

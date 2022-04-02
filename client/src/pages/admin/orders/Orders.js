@@ -14,6 +14,7 @@ import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { DELETE_ORDER_RESET } from "../../../constants/orderConstants";
 import Navbar from "../../../components/admin/navbar/Navbar";
+import MetaData from "../../../components/MetaData";
 
 const Orders = ({ history }) => {
     const alert = useAlert();
@@ -43,6 +44,7 @@ const Orders = ({ history }) => {
 
     return (
         <div className={styles.orders}>
+            <MetaData title={"Order"} />
             <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />

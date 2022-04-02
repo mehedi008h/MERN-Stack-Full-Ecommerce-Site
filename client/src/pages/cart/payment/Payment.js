@@ -17,6 +17,7 @@ import axios from "axios";
 import { clearErrors, createOrder } from "../../../actions/orderActions";
 import Navbar from "../../../components/header/Navbar";
 import Footer from "../../../components/footer/Footer";
+import MetaData from "../../../components/MetaData";
 
 const options = {
     style: {
@@ -123,6 +124,7 @@ const Payment = ({ history }) => {
     };
     return (
         <Fragment>
+            <MetaData title={"Payment"} />
             <Navbar />
             <div className={styles.payment}>
                 <div className="container">

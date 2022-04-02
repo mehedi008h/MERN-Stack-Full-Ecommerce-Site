@@ -21,6 +21,7 @@ import ListReview from "../reviews/ListReview";
 import Navbar from "../../components/header/Navbar";
 import Footer from "../../components/footer/Footer";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
+import MetaData from "../../components/MetaData";
 
 const SingleProduct = ({ match }) => {
     const [quantity, setQuantity] = useState(1);
@@ -113,6 +114,7 @@ const SingleProduct = ({ match }) => {
     };
     return (
         <Fragment>
+            <MetaData title={"Product Details"} />
             <Navbar />
             <div className={styles.product_details}>
                 {loading ? (

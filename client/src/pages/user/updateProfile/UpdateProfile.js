@@ -10,6 +10,7 @@ import {
 import Footer from "../../../components/footer/Footer";
 import Navbar from "../../../components/header/Navbar";
 import ButtonLoader from "../../../components/loader/ButtonLoader";
+import MetaData from "../../../components/MetaData";
 import ProfileLink from "../../../components/profileLinks/ProfileLink";
 import { UPDATE_PROFILE_RESET } from "../../../constants/userConstants";
 import styles from "./UpdateProfile.module.scss";
@@ -80,6 +81,7 @@ const UpdateProfile = ({ history }) => {
     };
     return (
         <Fragment>
+            <MetaData title={"Update Profile"} />
             <Navbar />
             <div className={styles.update_profile}>
                 <div className="container mt-5 mb-3">

@@ -10,6 +10,7 @@ import {
 } from "../../../actions/productAction";
 import Navbar from "../../../components/admin/navbar/Navbar";
 import Sidebar from "../../../components/admin/sidebar/Sidebar";
+import MetaData from "../../../components/MetaData";
 import { DELETE_REVIEW_RESET } from "../../../constants/productsConstants";
 import styles from "./ProductReview.module.scss";
 
@@ -55,6 +56,7 @@ const ProductReview = () => {
     };
     return (
         <div className={styles.review}>
+            <MetaData title={"Product Review"} />
             <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />

@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
 import { DELETE_PRODUCT_RESET } from "../../../constants/productsConstants";
 import Navbar from "../../../components/admin/navbar/Navbar";
+import MetaData from "../../../components/MetaData";
 const ProductsList = ({ history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
@@ -50,6 +51,7 @@ const ProductsList = ({ history }) => {
     };
     return (
         <div className={styles.products}>
+            <MetaData title={"All Products"} />
             <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />

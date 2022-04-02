@@ -10,11 +10,13 @@ import styles from "./Profile.module.scss";
 import Loader from "../../components/loader/Loader";
 import Navbar from "../../components/header/Navbar";
 import Footer from "../../components/footer/Footer";
+import MetaData from "../../components/MetaData";
 
 const Profile = () => {
     const { user, loading } = useSelector((state) => state.auth);
     return (
         <Fragment>
+            <MetaData title={"Profile"} />
             <Navbar />
             <div className={styles.profile}>
                 <div className="container mt-5 mb-3">

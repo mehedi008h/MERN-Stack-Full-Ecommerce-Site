@@ -5,6 +5,7 @@ import { clearErrors, updatePassword } from "../../../actions/userActions";
 import Footer from "../../../components/footer/Footer";
 import Navbar from "../../../components/header/Navbar";
 import ButtonLoader from "../../../components/loader/ButtonLoader";
+import MetaData from "../../../components/MetaData";
 import ProfileLink from "../../../components/profileLinks/ProfileLink";
 import { UPDATE_PASSWORD_RESET } from "../../../constants/userConstants";
 import styles from "./ChangePassword.module.scss";
@@ -46,6 +47,7 @@ const ChangePassword = ({ history }) => {
     };
     return (
         <Fragment>
+            <MetaData title={"Change Password"} />
             <Navbar />
             <div className={styles.update_password}>
                 <div className="container mt-5 mb-3">

@@ -17,6 +17,7 @@ import { AiOutlineDownload } from "react-icons/ai";
 import Loader from "../../../components/loader/Loader";
 import Navbar from "../../../components/header/Navbar";
 import Footer from "../../../components/footer/Footer";
+import MetaData from "../../../components/MetaData";
 
 const OrderDetails = ({ match }) => {
     const alert = useAlert();
@@ -63,6 +64,7 @@ const OrderDetails = ({ match }) => {
         paymentInfo && paymentInfo.status === "succeeded" ? true : false;
     return (
         <Fragment>
+            <MetaData title={"Order Details"} />
             <Navbar />
             <div className={styles.order_details}>
                 <div className="container mt-5 mb-3">

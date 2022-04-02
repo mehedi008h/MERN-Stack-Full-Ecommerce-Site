@@ -8,6 +8,7 @@ import {
 } from "../../../../actions/userActions";
 import Navbar from "../../../../components/admin/navbar/Navbar";
 import Sidebar from "../../../../components/admin/sidebar/Sidebar";
+import MetaData from "../../../../components/MetaData";
 import { UPDATE_USER_RESET } from "../../../../constants/userConstants";
 
 import styles from "./UserDetails.module.scss";
@@ -63,6 +64,7 @@ const UserDetails = ({ history, match }) => {
     };
     return (
         <div className={styles.user_details}>
+            <MetaData title={"User Details"} />
             <div className="row g-0">
                 <div className="col-md-2">
                     <Sidebar />

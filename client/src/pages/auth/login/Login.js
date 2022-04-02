@@ -6,6 +6,7 @@ import { clearErrors, login } from "../../../actions/userActions";
 import Footer from "../../../components/footer/Footer";
 import Navbar from "../../../components/header/Navbar";
 import ButtonLoader from "../../../components/loader/ButtonLoader";
+import MetaData from "../../../components/MetaData";
 import styles from "./Login.module.scss";
 
 const Login = ({ history, location }) => {
@@ -38,6 +39,7 @@ const Login = ({ history, location }) => {
     };
     return (
         <Fragment>
+            <MetaData title={"Login"} />
             <Navbar />
             <div className={styles.login}>
                 <div className={styles.login_container}>
