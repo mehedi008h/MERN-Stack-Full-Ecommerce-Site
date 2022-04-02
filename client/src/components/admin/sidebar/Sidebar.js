@@ -6,7 +6,7 @@ import { FiPlusSquare } from "react-icons/fi";
 
 import styles from "./Sidebar.module.scss";
 import { HiTemplate } from "react-icons/hi";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineHome } from "react-icons/ai";
 
 const Sidebar = () => {
     return (
@@ -19,6 +19,12 @@ const Sidebar = () => {
             <div>
                 <span>Main</span>
                 <div className="mt-1">
+                    <li>
+                        <Link to="/">
+                            <AiOutlineHome className="me-3" size={25} />
+                            Home
+                        </Link>
+                    </li>
                     <li>
                         <Link to="/admin">
                             <MdOutlineDashboard className="me-3" size={25} />

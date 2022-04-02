@@ -1,0 +1,34 @@
+.banner {
+    .swiper {
+        min-height: 80vh;
+        background-color: peachpuff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-poppins);
+
+        .slider_text {
+            p {
+                color: var(--color-gray);
+                font-weight: 500;
+                letter-spacing: 1px;
+            }
+            h1 {
+                color: black;
+                line-height: 70px;
+                font-size: 50px;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+            button {
+                border: none;
+                background-color: brown;
+                padding: 0.5rem 1rem;
+                color: #fff;
+                margin-top: 15px;
+                font-weight: 500;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
