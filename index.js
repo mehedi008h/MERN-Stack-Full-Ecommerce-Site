@@ -27,6 +27,12 @@ app.use("/api/v1", products);
 app.use("/api/v1", payment);
 app.use("/api/v1", order);
 
+app.use(express.static(path.join(__dirname, "/client/build")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+});
+
 // connecting to database
 connectDatabase();
 

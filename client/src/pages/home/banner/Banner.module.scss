@@ -1,16 +1,17 @@
 .banner {
-    .swiper {
+    .swiper1 {
         min-height: 80vh;
-        background-color: peachpuff;
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: var(--font-poppins);
+        background-image: url("https://res.cloudinary.com/mehedi08h/image/upload/v1648866793/shopx/banner/parallax_mrz2mq.jpg");
 
         .slider_text {
+            margin-top: 30px;
             p {
                 color: var(--color-gray);
-                font-weight: 500;
+                font-weight: 700;
                 letter-spacing: 1px;
             }
             h1 {
@@ -20,14 +21,56 @@
                 font-weight: 700;
                 letter-spacing: 1px;
             }
-            button {
-                border: none;
-                background-color: brown;
-                padding: 0.5rem 1rem;
+            div {
+                margin-top: 30px;
+                a {
+                    border: none;
+                    text-decoration: none;
+                    background-color: brown;
+                    padding: 0.5rem 1rem;
+                    color: #fff;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+    .swiper2 {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-poppins);
+        background-image: url("https://res.cloudinary.com/mehedi08h/image/upload/v1648866794/shopx/banner/2_rvde7n.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        .slider_text {
+            margin-top: 30px;
+            p {
                 color: #fff;
-                margin-top: 15px;
-                font-weight: 500;
-                text-transform: uppercase;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+            h1 {
+                color: black;
+                line-height: 70px;
+                font-size: 50px;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+            div {
+                margin-top: 30px;
+                a {
+                    border: none;
+                    text-decoration: none;
+                    background-color: brown;
+                    padding: 0.5rem 1rem;
+                    color: #fff;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
             }
         }
     }

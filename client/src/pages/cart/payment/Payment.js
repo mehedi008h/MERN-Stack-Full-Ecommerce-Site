@@ -13,11 +13,11 @@ import {
     CardCvcElement,
 } from "@stripe/react-stripe-js";
 
-import axios from "axios";
 import { clearErrors, createOrder } from "../../../actions/orderActions";
 import Navbar from "../../../components/header/Navbar";
 import Footer from "../../../components/footer/Footer";
 import MetaData from "../../../components/MetaData";
+import { axiosInstance } from "../../../config";
 
 const options = {
     style: {
@@ -77,7 +77,7 @@ const Payment = ({ history }) => {
                 },
             };
 
-            res = await axios.post(
+            res = await axiosInstance.post(
                 "/api/v1/payment/process",
                 paymentData,
                 config
