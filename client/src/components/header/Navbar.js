@@ -190,22 +190,38 @@ const Navbar = () => {
                             >
                                 <HiX onClick={() => setToggle(false)} />
                                 <ul>
-                                    {[
-                                        "home",
-                                        "about",
-                                        "work",
-                                        "skills",
-                                        "contact",
-                                    ].map((item) => (
-                                        <li key={item}>
-                                            <a
-                                                href={`#${item}`}
-                                                onClick={() => setToggle(false)}
-                                            >
-                                                {item}
-                                            </a>
-                                        </li>
-                                    ))}
+                                    <li>
+                                        <Link
+                                            to="/"
+                                            onClick={() => setToggle(false)}
+                                        >
+                                            Home
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/products"
+                                            onClick={() => setToggle(false)}
+                                        >
+                                            Products
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/contact"
+                                            onClick={() => setToggle(false)}
+                                        >
+                                            Contact
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/about"
+                                            onClick={() => setToggle(false)}
+                                        >
+                                            About
+                                        </Link>
+                                    </li>
                                 </ul>
                             </motion.div>
                         )}
