@@ -1,5 +1,6 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-    baseURL: "https://shopx-mern-app.herokuapp.com",
+    baseURL:
+        "https://mern-stack-full-ecommerce-site-production-c004.up.railway.app",
 });
